@@ -4,8 +4,6 @@
 MIME::Type - Definition of one MIME type
 
 
-=head1 INHERITANCE
-
 
 =head1 SYNOPSIS
 
@@ -47,7 +45,7 @@ overload: B<string comparison>
 =over 4
 
 When a MIME::Type object is compared to either a string or an other
-MIME::TYpe, the L<equals()|"Knowledge"> method is called.  Comparison is smart,
+MIME::TYpe, the L<equals()|MIME::Type/"Knowledge"> method is called.  Comparison is smart,
 which means that it extends common string comparison with some
 features which are defined in the related RFCs.
 
@@ -58,7 +56,7 @@ overload: B<stringification>
 =over 4
 
 The stringification (use of the object in a place where a string
-is required) will result in the type name, the same as L<type()|"Attributes">
+is required) will result in the type name, the same as L<type()|MIME::Type/"Attributes">
 returns.
 
 I<Example:> use of stringification
@@ -290,7 +288,7 @@ See the Mime::Types website at L<http://perl.overmeer.net/mimetypes/> for more d
 
 =head1 COPYRIGHTS
 
-Module version 1.06.
+Module version 1.07.
 Written by Mark Overmeer (mimetypes@overmeer.net).  See the ChangeLog for
 other contributors.
 

@@ -1,12 +1,11 @@
 ChangeLog
 MANIFEST
-MIME/Makefile.PL
-MIME/Type.pm
-MIME/Type.pod
-MIME/Types.pm
-MIME/Types.pod
 Makefile.PL
 README
+lib/MIME/Type.pm
+lib/MIME/Type.pod
+lib/MIME/Types.pm
+lib/MIME/Types.pod
 t/10type.t
 t/11typeol.t
 t/20types.t

@@ -1,6 +1,6 @@
 package MIME::Type;
 use vars '$VERSION';
-$VERSION = '1.06';
+$VERSION = '1.07';
 
 use strict;
 use Carp 'croak';
@@ -12,9 +12,6 @@ use Carp 'croak';
 use overload '""' => 'type'
            ,  cmp => 'equals'
            ;
-
-#-------------------------------------------
-
 
 #-------------------------------------------
 
