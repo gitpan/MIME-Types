@@ -20,25 +20,25 @@ print "ok 1\n";
 
 ($mt, $cte) = MIME::Types::by_suffix("Pdf");
 print $mt eq "application/pdf" && $cte eq "base64" ? "ok 2\n" :
-	"not ok 2\n";
+	"not ok 2 ($mt $cte)\n";
 
 ($mt, $cte) = MIME::Types::by_suffix("foo.Pdf");
 print $mt eq "application/pdf" && $cte eq "base64" ? "ok 3\n" :
-	"not ok 3\n";
+	"not ok 3 ($mt $cte)\n";
 
 ($mt, $cte) = MIME::Types::by_suffix("flurfl");
 print $mt eq "" && $cte eq "" ? "ok 4\n" : "not ok 4\n";
 
 @c = MIME::Types::by_mediatype("pdF");
 print @c == 1 && $c[0]->[0] eq "pdf" && $c[0]->[1] eq "application/pdf" &&
-    $c[0]->[2] eq "base64" ? "ok 5\n" : "not ok 5\n";
+    $c[0]->[2] eq "base64" ? "ok 5\n" : "not ok 5 (@$c[0])\n";
 
 @c = MIME::Types::by_mediatype("Application/pDF");
 print @c == 1 && $c[0]->[0] eq "pdf" && $c[0]->[1] eq "application/pdf" &&
-    $c[0]->[2] eq "base64" ? "ok 6\n" : "not ok 6\n";
+    $c[0]->[2] eq "base64" ? "ok 6\n" : "not ok 6 (@$c[0])\n";
 
 @c = MIME::Types::by_mediatype("e");
-print @c > 1 ? "ok 7\n" : "not ok 7\n";
+print @c > 1 ? "ok 7\n" : "not ok 7 (" . scalar(@c) . ")\n";
 
 @c = MIME::Types::by_mediatype("xyzzy");
 print @c == 0 ? "ok 8\n" : "not ok 8\n";

@@ -13,9 +13,7 @@ require AutoLoader;
 @EXPORT = qw();
 @EXPORT_OK = qw( whatis );
 
-$VERSION = '0.01';
-
-# Preloaded methods go here.
+$VERSION = '0.02';
 
 my %_default_table = (
 	ai => ['application/postscript' , '8bit'],
@@ -57,7 +55,7 @@ my %_default_table = (
 	mpe => ['video/mpeg' , 'base64'],
 	mpg => ['video/mpeg' , 'base64'],
 	pdf => ['application/pdf' , 'base64'],
-	ppt => ['application/vnd.ms-excel' , 'base64'],
+	ppt => ['application/vnd.ms-powerpoint' , 'base64'],
 	ps => ['application/postscript' , '8bit'],
 	'ps-z' => ['application/postscript' , 'base64'],
 	qt => ['video/quicktime' , 'base64'],
@@ -74,8 +72,8 @@ my %_default_table = (
 	txt => ['text/plain' , '8bit'],
 	ua => ['audio/basic' , 'base64'],
 	wav => ['audio/x-wav' , 'base64'],
+	xls => ['application/vnd.ms-excel' , 'base64'],
 	xbm => ['image/x-xbitmap' , '7bit'],
-	xls => ['application/vnd.ms-powerpoint' , 'base64'],
 	zip => ['application/zip' , 'base64'],
 );
 
@@ -141,7 +139,9 @@ BEGIN {
 	}
 }
 
-my %_table = undef;
+my %_table;
+
+# Preloaded methods go here.
 
 sub by_suffix {
 
@@ -156,9 +156,9 @@ sub by_suffix {
 
 	# Load the types table if it's not already loaded
 
-	if (! defined(%_table)) {
+	if (! %_table) {
 		my $table_ref = $_os_map_table{$OS};
-		%_table = (defined $table_ref) ?
+		%_table = (ref($table_ref) eq 'HASH') ?
 		    %$table_ref : %_default_table;
 	}
 
@@ -180,9 +180,9 @@ sub by_mediatype {
 
 	# Load the types table if it's not already loaded
 
-	if (! defined(%_table)) {
+	if (! %_table) {
 		my $table_ref = $_os_map_table{$OS};
-		%_table = (defined $table_ref) ?
+		%_table = (ref($table_ref) eq 'HASH') ?
 		    %$table_ref : %_default_table;
 	}
 
