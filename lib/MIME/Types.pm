@@ -1,6 +1,6 @@
 package MIME::Types;
 use vars '$VERSION';
-$VERSION = '1.09';
+$VERSION = '1.10';
 
 use strict;
 
@@ -14,14 +14,16 @@ use Carp;
 my %list;
 sub new(@) { (bless {}, shift)->init( {@_} ) }
 
+my $mime_type_definitions;  # see bottom file
+
 sub init($)
 {   my ($self, $args) = @_;
 
-    unless(keys %list)
+    unless(keys %list)   # already read
     {   local $_;
-        local $/ = "\n";
+        local $/  = "\n";
 
-        while(<MIME::Types::DATA>)
+        foreach (split /^/, $mime_type_definitions)
         {   s/\#.*//;
             next if m/^$/;
 
@@ -50,7 +52,7 @@ sub init($)
         }
     }
 
-    close DATA;
+    undef $mime_type_definitions;   # to reduce memory consumption
     $self;
 }
 
@@ -182,14 +184,12 @@ please send them to the author.
 CROAK
 }
 
-1;
-
 #-------------------------------------------
 # Internet media type registry is at
 # <http://www.iana.org/assignments/media-types/> and
 # F<ftp://ftp.iana.org/in-notes/iana/assignments/media-types/>.
 
-__DATA__
+$mime_type_definitions = <<MIMETYPES;
 application/access		mdf
 application/activemessage
 application/andrew-inset	ez
@@ -775,3 +775,7 @@ x-world/x-vrml				wrl,vrml
 
 vms:text/plain				doc				8bit
 mac:application/x-macbase64		bin
+
+MIMETYPES
+
+1;
