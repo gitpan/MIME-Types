@@ -1,5 +1,13 @@
 Revision history for Perl extension MIME::Types.
 
+0.03  Fri Feb 23 10:32:44 2001
+	- Many changes by David Wheeler (david@wheeler.net) including:
+	- substituting some regexp's with faster string calls
+	- simplifying the mapping table startup code
+	- allowing the returning of array references instead of lists
+
+0.02  Sat Nov  6 00:00:00 1999
+	- Fix a few bad suffix mappings and add a bit of robustness
+
 0.01  Tue Oct  5 14:00:18 1999
 	- original version; created by h2xs 1.18
-
