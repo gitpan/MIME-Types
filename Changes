@@ -1,8 +1,12 @@
 Revision history for Perl extension MIME::Types.
 
+0.05  Fri Jun 15 15:10:08 PDT 2001
+	- Added changes to import_mime_types by Antonios Christofides
+	  (A.Christofides@hydro.ntua.gr)
+
 0.04  Thu Apr 19 15:37:23 PDT 2001
-	- Added new function import_mime_types by Mike Cramer (cramer@webkist.com)
-	  to read an Apache-style mime.types file.
+	- Added new function import_mime_types by Mike Cramer
+	  (cramer@webkist.com) to read an Apache-style mime.types file.
 
 0.03  Fri Feb 23 10:32:44 2001
 	- Many changes by David Wheeler (david@wheeler.net) including:

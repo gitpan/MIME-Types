@@ -8,7 +8,7 @@ require Exporter;
 @ISA = qw(Exporter);
 @EXPORT_OK = qw(by_suffix by_mediatype import_mime_types);
 
-$VERSION = '0.04';
+$VERSION = '0.05';
 
 my $_table = {
 	      ai => ['application/postscript', '8bit'],
@@ -120,7 +120,7 @@ sub by_mediatype {
 
 sub import_mime_types {
     my $mimefile = shift || return;
-    my($type, $exts, $enc, $num, $ext);
+    my($type, @exts, $enc, $num, $ext);
 
     local *MIMEFILE;
     local $_;
@@ -128,17 +128,17 @@ sub import_mime_types {
     open(MIMEFILE, $mimefile) || die "Can't open mime.types file: $!\n";
 
     while(<MIMEFILE>) {
-      chop;
-      next if m/^#/;
-      next if m/^$/;
-      ($type, $exts) = m|^([a-z]+\/[a-z0-9\.\-]+)\s+([a-z0-9]+.*[a-z0-9])\s*$|i;
+      chomp;
+      next if m/^\s*#/;
+      next if m/^\s*$/;
+      ($type, @exts) = split;
       if ($type =~ m|^text\/|) {
         $enc = "quoted-printable";
       } else {
         $enc = "base64";
       }
-      foreach $ext (split(/\s+/, $exts)) {
-        if (! $_table->{$ext}) {
+      foreach $ext (@exts) {
+        if (! defined($_table->{$ext})) {
 	  $num++;
 	  $_table->{$ext} = [$type, $enc];
 	}
@@ -228,7 +228,8 @@ Jeff Okamoto <F<okamoto@corp.hp.com>>.
 
 Updated by David Wheeler <F<david@wheeler.net>>.
 
-B<import_mime_types> added by Mike Cramer <F<cramer@webkist.com>>.
+B<import_mime_types> added by Mike Cramer <F<cramer@webkist.com>>
+with fixes by Antonios Christofides <F<A.Christofides@hydro.ntua.gr>>.
 
 Inspired by the mail_attach.pl program by
 Dan Sugalski <F<dan@sidhe.org>>.

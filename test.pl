@@ -75,7 +75,7 @@ $aref = MIME::Types::by_mediatype("xyzzy");
 print @$aref == 0 ? "ok 15\n" : "not ok 15 (@$aref)\n";
 
 $aref = MIME::Types::import_mime_types("mime.types");
-print $aref == 86 ? "ok 16\n" : "not ok 16 ($aref should be 86)\n";
+print $aref == 87 ? "ok 16\n" : "not ok 16 ($aref should be 87)\n";
 
 $aref = MIME::Types::by_suffix("foo.tsv");
 print $aref->[0] eq "text/tab-separated-values" && $aref->[1] eq "quoted-printable" ? "ok 17\n" :
