@@ -1,6 +1,6 @@
 package MIME::Type;
 use vars '$VERSION';
-$VERSION = '1.13';
+$VERSION = '1.15';
 
 use strict;
 

@@ -78,7 +78,18 @@ C<MIME::Type> which must be experimental: either the main-type or
 the sub-type must start with C<x->.
 
 Please inform the maintainer of this module when registered types
-are missing.
+are missing.  Before version MIME::Types version 1.14, a warning
+was produced when an unknown IANA type was added.  This has been
+removed, because some people need that to get their application
+to work locally... broken applications...
+
+=back
+
+$obj-E<gt>B<extensions>
+
+=over 4
+
+Returns a list of all defined extensions.
 
 =back
 
@@ -116,15 +127,15 @@ is returned.
 
 =back
 
+$obj-E<gt>B<types>
+
+=over 4
+
+Returns a list of all defined mime-types
+
+=back
 
 
-=head1 DIAGNOSTICS
-
-I<Warning:> type $type already registered.
-
-You try to register a type, when it is already known.  This means that
-you are duplicating work (with chance on errors) or have knowledge you
-can contribute to this module (please contact the author).
 
 
 
@@ -137,7 +148,7 @@ See the Mime::Types website at L<http://perl.overmeer.net/mimetypes/> for more d
 
 =head1 COPYRIGHTS
 
-Module version 1.13.
+Module version 1.15.
 Written by Mark Overmeer (mimetypes@overmeer.net).  See the ChangeLog for
 other contributors.
 

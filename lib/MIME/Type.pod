@@ -62,7 +62,7 @@ returns.
 I<Example:> use of stringification
 
 
- my $mime = Mime::Tyep->new('text/html');
+ my $mime = MIME::Type->new('text/html');
  print "$mime\n";   # explicit stringification
  print $mime;       # implicit stringification
 
@@ -288,7 +288,7 @@ See the Mime::Types website at L<http://perl.overmeer.net/mimetypes/> for more d
 
 =head1 COPYRIGHTS
 
-Module version 1.13.
+Module version 1.15.
 Written by Mark Overmeer (mimetypes@overmeer.net).  See the ChangeLog for
 other contributors.
 
