@@ -1,8 +1,9 @@
 package MIME::Types;
 use vars '$VERSION';
-$VERSION = '1.07';
+$VERSION = '1.08';
 
 use strict;
+
 use MIME::Type ();
 use Carp;
 
@@ -28,6 +29,7 @@ sub init($)
 
             my ($type, $extensions, $encoding) = split;
             if(   !$encoding
+               && defined $extensions
                && $extensions =~ m/^(?:base64|7bit|8bit|quoted\-printable)$/
               )
             {    # second column is empty
@@ -717,7 +719,7 @@ text/comma-separated-values		csv				8bit
 text/directory
 text/enriched
 text/html				html,htm,htmlx,shtml,htx	8bit
-text/plain			asc,txt,c,cc,h,hh,cpp,hpp,dat,hlp	8bit
+text/plain			txt,asc,c,cc,h,hh,cpp,hpp,dat,hlp	8bit
 text/prs.lines.tag
 text/rfc822-headers
 text/richtext				rtx				8bit
