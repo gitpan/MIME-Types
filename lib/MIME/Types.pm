@@ -1,6 +1,6 @@
 package MIME::Types;
 use vars '$VERSION';
-$VERSION = '1.11';
+$VERSION = '1.12';
 
 use strict;
 
@@ -210,7 +210,6 @@ application/EDI-Consent
 application/EDIFACT
 application/EDI-X12
 application/eshop
-application/excel               xls,xlt                 base64
 application/font-tdpfr		pfr
 application/futuresplash	spl
 application/ghostview		
@@ -447,7 +446,7 @@ application/vnd.ms-artgalry	cil
 application/vnd.ms-access	mda,mdb,mde
 application/vnd.ms-asf		asf
 application/vnd.mseq		mseq
-application/vnd.ms-excel	xls,xlt
+application/vnd.ms-excel	xls,xlt			base64
 application/vnd.msign
 application/vnd.ms-lrm		lrm
 application/vnd.ms-powerpoint	ppt,pps,pot
