@@ -1,5 +1,20 @@
 Revision history for Perl extension MIME::Types.
 
+0.12 Wed Nov 28 09:39:44 CET 2001
+	Mark Overmeer took the namespace over from Jeff Okamoto
+	- In scalar context MIME::Types::type will return only the
+	  first type that fits.
+
+0.10  Sat Nov  3 22:46:22 2001
+	Mark Overmeer
+	- Total redesign of the interface, object oriented with two
+	  classes: the MIME::Types and the MIME::Type.
+	- No seperate mime.types file anymore, but included inside
+	  MIME::Types, such that installation is much easier.
+	- Merged-in apache's mime types 1.3.14
+	- New test files.
+	- Modernized test.pl into t/30export.t
+
 0.06  Fri Jun 22 15:18:28 PDT 2001
 	- Repackage.
 

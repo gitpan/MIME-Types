@@ -1,7 +1,10 @@
 use ExtUtils::MakeMaker;
-# See lib/ExtUtils/MakeMaker.pm for details of how to influence
-# the contents of the Makefile that is written.
-WriteMakefile(
-    'NAME'	=> 'MIME::Types',
-    'VERSION_FROM' => 'Types.pm', # finds $VERSION
-);
+
+WriteMakefile
+  ( NAME		=> 'MIME::Types'
+  , VERSION_FROM	=> 'MIME/Types.pm'
+  , DIR                 => [ 'MIME' ]
+  , PREREQ_PM		=> {}
+  , AUTHOR              => 'Mark Overmeer'
+  , ABSTRACT            => 'Definition of MIME types'
+  );
