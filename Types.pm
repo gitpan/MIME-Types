@@ -6,9 +6,9 @@ use vars qw($VERSION @ISA @EXPORT_OK);
 require Exporter;
 
 @ISA = qw(Exporter);
-@EXPORT_OK = qw(by_suffix by_mediatype);
+@EXPORT_OK = qw(by_suffix by_mediatype import_mime_types);
 
-$VERSION = '0.03';
+$VERSION = '0.04';
 
 my $_table = {
 	      ai => ['application/postscript', '8bit'],
@@ -118,6 +118,37 @@ sub by_mediatype {
     return wantarray ? @rv : \@rv;
 }
 
+sub import_mime_types {
+    my $mimefile = shift || return;
+    my($type, $exts, $enc, $num, $ext);
+
+    local *MIMEFILE;
+    local $_;
+
+    open(MIMEFILE, $mimefile) || die "Can't open mime.types file: $!\n";
+
+    while(<MIMEFILE>) {
+      chop;
+      next if m/^#/;
+      next if m/^$/;
+      ($type, $exts) = m|^([a-z]+\/[a-z0-9\.\-]+)\s+([a-z0-9]+.*[a-z0-9])\s*$|i;
+      if ($type =~ m|^text\/|) {
+        $enc = "quoted-printable";
+      } else {
+        $enc = "base64";
+      }
+      foreach $ext (split(/\s+/, $exts)) {
+        if (! $_table->{$ext}) {
+	  $num++;
+	  $_table->{$ext} = [$type, $enc];
+	}
+      }
+    }
+    close(MIMEFILE);
+    return $num;
+}
+
+
 1;
 __END__
 
@@ -127,7 +158,9 @@ MIME::Types - Perl extension for determining MIME types and Transfer Encoding
 
 =head1 SYNOPSIS
 
-  use MIME::Types qw(by_suffix by_mediatype);
+  use MIME::Types qw(by_suffix by_mediatype import_mime_types);
+
+  import_mime_types("/www/mime.types");
 
   my ($mime_type, $encoding) = by_suffix(FILENAME);
   my $aref = by_suffix(FILENAME);
@@ -172,6 +205,21 @@ All regular expression codes are supported
 (except, of course, any string with a slash in it).
 Thus, calling B<by_mediatype("application")> will return a large list.
 
+=item B<import_mime_types>
+
+This function takes a filename as argument and returns the number
+of filename extensions imported. The file should be similar in format
+to the mime.types file distributed with the Apache webserver. Each
+MIME type should be at the start of a line followed by whitespace
+separated extensions (without the "."). For example:
+
+text/tab-separated-values    tab tsv
+
+If an extension in the mime.types file conflicts with an extension
+built into the MIME::Types package, it will be ignored. The encoding
+assigned to each type is "quoted-printable" for "text/*" types and
+"base64" for everything else.
+
 =back
 
 =head1 AUTHOR
@@ -179,6 +227,8 @@ Thus, calling B<by_mediatype("application")> will return a large list.
 Jeff Okamoto <F<okamoto@corp.hp.com>>.
 
 Updated by David Wheeler <F<david@wheeler.net>>.
+
+B<import_mime_types> added by Mike Cramer <F<cramer@webkist.com>>.
 
 Inspired by the mail_attach.pl program by
 Dan Sugalski <F<dan@sidhe.org>>.

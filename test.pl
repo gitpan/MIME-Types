@@ -6,7 +6,7 @@
 # Change 1..1 below to 1..last_test_to_print .
 # (It may become useful if the test is moved to ./t subdirectory.)
 
-BEGIN { $| = 1; print "1..15\n"; }
+BEGIN { $| = 1; print "1..17\n"; }
 END {print "not ok 1\n" unless $loaded;}
 use MIME::Types;
 $loaded = 1;
@@ -73,3 +73,11 @@ print @$aref > 1 ? "ok 14\n" : "not ok 14 (" . scalar(@$aref) . ")\n";
 
 $aref = MIME::Types::by_mediatype("xyzzy");
 print @$aref == 0 ? "ok 15\n" : "not ok 15 (@$aref)\n";
+
+$aref = MIME::Types::import_mime_types("mime.types");
+print $aref == 86 ? "ok 16\n" : "not ok 16 ($aref should be 86)\n";
+
+$aref = MIME::Types::by_suffix("foo.tsv");
+print $aref->[0] eq "text/tab-separated-values" && $aref->[1] eq "quoted-printable" ? "ok 17\n" :
+	"not ok 17 (@$aref)\n";
+
