@@ -8,7 +8,7 @@ require Exporter;
 @ISA = qw(Exporter);
 @EXPORT_OK = qw(by_suffix by_mediatype import_mime_types);
 
-$VERSION = '0.05';
+$VERSION = '0.06';
 
 my $_table = {
 	      ai => ['application/postscript', '8bit'],
