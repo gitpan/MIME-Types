@@ -1,6 +1,6 @@
 package MIME::Types;
 use vars '$VERSION';
-$VERSION = '1.10';
+$VERSION = '1.11';
 
 use strict;
 
@@ -151,7 +151,7 @@ sub by_mediatype($)
 {   my $type = shift;
     my @found;
 
-    if($type =~ m!/!)
+    if(index($type, '/') >= 0)
     {   my $simplified = MIME::Type->simplified($type);
         my $mime = $list{$simplified};
         push @found, @$mime if defined $mime;
@@ -210,7 +210,7 @@ application/EDI-Consent
 application/EDIFACT
 application/EDI-X12
 application/eshop
-application/excel		xls,xlt			base64
+application/excel               xls,xlt                 base64
 application/font-tdpfr		pfr
 application/futuresplash	spl
 application/ghostview		
@@ -218,7 +218,7 @@ application/hep			hep
 application/http
 application/hyperstudio		stk
 application/iges
-application/imagemap		imagemap,imap		8bit
+application/imagemap		imagemap,imap			8bit
 application/index
 application/index.cmd
 application/index.obj
@@ -235,13 +235,15 @@ application/marc
 application/mathematica
 application/mathcad		mcd				base64
 application/mathematica-old
+application/mpeg4-generic
 application/msword		doc,dot,wrd			base64
 application/news-message-id
 application/news-transmission
-application/ocsp-request
-application/ocsp-response
+application/ocsp-request	orq
+application/ocsp-response	ors
 application/octet-stream	bin,dms,lha,lzh,exe,class,ani,pgp	base64
 application/oda			oda
+application/ogg			ogg
 application/parityfec
 application/pdf			pdf				base64
 application/pagemaker		pm5,pt5,pm
@@ -249,19 +251,23 @@ application/pgp-encrypted					7bit
 application/pgp-keys						7bit
 application/pgp
 application/pgp-signature	sig				base64
-application/pkcs10
-application/pkcs7-mime
-application/pkcs7-signature
-application/pkix-cert
-application/pkixcmp
-application/pkix-crl
+application/pidf+xml
+application/pkcs10		p10
+application/pkcs7-mime		p7m,p7c
+application/pkcs7-signature	p7s
+application/pkix-cert		cer
+application/pkixcmp		pki
+application/pkix-crl		crl
+application/pkix-pkipath	pkipath
 application/postscript		ai,eps,ps			8bit
 application/postscript		ps-z				base64
-application/powerpoint		ppt,pps,pot				base64
+application/powerpoint		ppt,pps,pot			base64
 application/prs.alvestrand.titrax-sheet
 application/prs.cww		cw,cww
 application/prs.nprend		rnd,rct
+application/prs.plucker
 application/qsig
+application/reginfo+xml
 application/remote-printing
 application/riscos
 application/rtf			rtf				8bit
@@ -272,6 +278,7 @@ application/set-registration
 application/set-registration-initiation
 application/sgml
 application/sgml-open-catalog	soc
+application/sieve		siv
 application/slate
 application/smil		smi,smil
 application/timestamp-query
@@ -304,9 +311,9 @@ application/vnd.cinderella	cdy
 application/vnd.claymore
 application/vnd.commerce-battelle
 application/vnd.commonspace
-application/vnd.comsocaller
 application/vnd.contact.cmsg
-application/vnd.cosmocaller
+application/vnd.cosmocaller	cmc
+application/vnd.criticaltools.wbs+xml	wbs
 application/vnd.ctc-posml
 application/vnd.cups-postscript
 application/vnd.cups-raster
@@ -335,6 +342,7 @@ application/vnd.ericsson.quickcall
 application/vnd.eudora.data
 application/vnd.fdf
 application/vnd.ffsns
+applivation/vnd.fints
 application/vnd.FloGraphIt
 application/vnd.framemaker
 application/vnd.fsc.weblauch	fsc			7bit
@@ -347,6 +355,7 @@ application/vnd.fujixerox.ddd
 application/vnd.fujixerox.docuworks
 application/vnd.fujixerox.docuworks.binder
 application/vnd.fut-misnet
+application/vnd.genomatix.tuxedo	txd
 application/vnd.grafeq
 application/vnd.groove-account
 application/vnd.groove-help
@@ -368,6 +377,7 @@ application/vnd.ibm.afplinedata
 application/vnd.ibm.electronic-media	emm
 application/vnd.ibm.MiniPay
 application/vnd.ibm.modcap
+applivation/vnd.ibm.rights-management	irm
 application/vnd.ibm.secure-container	sc
 application/vnd.informix-visionary
 application/vnd.intercon.formnet
@@ -375,6 +385,7 @@ application/vnd.intertrust.digibox
 application/vnd.intertrust.nncp
 application/vnd.intu.qbo
 application/vnd.intu.qfx
+application/vnd.ipunplugged.rcprofile	rcprofile
 application/vnd.irepository.package+xml	irp
 application/vnd.is-xpr
 application/vnd.japannet-directory-service
@@ -391,12 +402,15 @@ application/vnd.kde.kchart	chrt
 application/vnd.kde.kformula	kfo
 application/vnd.kde.kivio	flw
 application/vnd.kde.kontour	kon
-application/vnd.kde.kpresenter	ksp
+application/vnd.kde.kpresenter	kpr,kpt
 application/vnd.kde.kspread	ksp
 application/vnd.kde.kword	kwd,kwt
 application/vnd.kenameapp	htke
+application/vnd.kidspiration	kia
 application/vnd.koan
+application/vnd.liberty-request+xml
 application/vnd.llamagraphics.life-balance.desktop	lbd
+application/vnd.llamagraphics.life-balance.exchange+xml	lbe
 application/vnd.lotus-1-2-3
 application/vnd.lotus-approach
 application/vnd.lotus-freelance
@@ -443,6 +457,7 @@ application/vnd.ms-works
 application/vnd.ms-wpl		wpl
 application/vnd.musician
 application/vnd.music-niff
+application/vnd.nervana		ent,entity,req,request,bkm,kcm
 application/vnd.netfpx
 application/vnd.noblenet-directory
 application/vnd.noblenet-sealer
@@ -453,8 +468,10 @@ application/vnd.novadigm.EXT
 application/vnd.obn
 application/vnd.osa.netdeploy
 application/vnd.palm		prc,pdb,pqa,oprc
+application/vnd.paos.xml
 application/vnd.pg.format
 application/vnd.pg.osasli
+application/vnd.picsel		efif
 application/vnd.powerbuilder6
 application/vnd.powerbuilder6-s
 application/vnd.powerbuilder7
@@ -469,8 +486,15 @@ application/vnd.pwg-xmhtml-print+xml
 application/vnd.Quark.QuarkXPress	qxd,qxt,qwd,qwt,qxl,qxb		8bit
 application/vnd.rapid
 application/vnd.s3sms
-application/vnd.seemail
+application/vnd.sealed.doc	sdoc,sdo,s1w
+application/vnd.sealed.eml	seml,sem
+application/vnd.sealed.mht	smht,smh
 application/vnd.sealed.net
+application/vnd.sealed.ppt	sppt,spp,s1p
+application/vnd.sealed.xls	sxls,sxl,s1e
+application/vnd.sealedmedia.softseal.html	stml,stm,s1h
+application/vnd.sealedmedia.softseal.pdf	spdf,spd,s1a
+application/vnd.seemail		see
 application/vnd.shana.informed.formdata
 application/vnd.shana.informed.formtemplate
 application/vnd.shana.informed.interchange
@@ -511,12 +535,22 @@ application/vnd.wap.slc			slc
 application/vnd.wap.wbxml		wbxml
 application/vnd.wap.wmlc		wmlc
 application/vnd.wap.wmlscriptc		wmlsc
-application/vnd.webturbo
+application/vnd.webturbo		wtb
+application/vnd.wqd			wqd
 application/vnd.wrq-hp3000-labelled
+application/vnd.wv.csp+xml					8bit
+application/vnd.wv.csp+wbxml		wv
+application/vnd.wv.ssp+xml					8bit
 application/vnd.wt.stf
 application/vnd.xara
 application/vnd.xfdl
+application/vnd.yamaha.hv-dic		hvd
+application/vnd.yamaha.hv-script	hvs
+application/vnd.yamaha.hv-voice		hvp
+application/vnd.yamaha.smaf-audio	saf
+aplicationv/vnd.yamaha.smaf-phrase	spf
 application/vnd.yellowriver-custom-menu
+application/watcherinfo+xml		wif
 application/whoispp-query
 application/whoispp-response
 application/wita
@@ -544,6 +578,7 @@ application/x-hdf		hdf
 application/xhtml+xml		xhtml				8bit
 application/x-httpd-php		phtml,pht,php			8bit
 application/x-ica		ica
+application/x-java-jnlp-file	jnlp
 application/x-javascript	js				8bit
 application/x-koan		skp,skd,skt,skm
 application/x-latex		latex				8bit
@@ -563,7 +598,7 @@ application/x-rar-compressed	rar				base64
 application/x-shar		shar				8bit
 application/x-shockwave-flash	swf
 application/x-sh		sh				8bit
-application/x-spss		sav,spp,sbs,sps,spo
+application/x-spss		sav,sbs,sps,spo
 application/x-stuffit		sit				base64
 application/x-sv4cpio		sv4cpio				base64
 application/x-sv4crc		sv4crc				base64
@@ -581,12 +616,16 @@ application/x-Wingz		wz
 application/x-x509-ca-cert	crt				base64
 application/zip			zip				base64
 audio/32kadpcm
-audio/amr			amr				base64
-audio/amr-wb			awb				base64
+audio/AMR			amr				base64
+audio/AMR-WB			awb				base64
 audio/basic			au,snd				base64
 audio/CN
 audio/DAT12
+audio/dsr-es201108
 audio/DVI4
+audio/EVRC			evc
+audio/EVRC0
+audio/EVRC-QCP
 audio/G.722.1
 audio/G722
 audio/G723
@@ -600,9 +639,11 @@ audio/G729D
 audio/G729E
 audio/GSM
 audio/GSM-EFR
-audio/l16			l16
-audio/l20
-audio/l24
+audio/L8
+audio/L16			l16
+audio/L20
+audio/L24
+audio/LPC
 audio/midi			mid,midi,kar			base64
 audio/MP4A-LATM
 audio/MPA
@@ -612,8 +653,11 @@ audio/parityfec
 audio/PCMA
 audio/PCMU
 audio/prs.sid			sid,psid
-audio/QCELP
+audio/QCELP			qcp
 audio/RED
+audio/SMV			smv
+audio/SMV0
+audio/SMV-QCP
 audio/telephone-event
 audio/tone
 audio/VDVI
@@ -624,13 +668,15 @@ audio/vnd.cns.inf1
 audio/vnd.digital-winds		eol			7bit
 audio/vnd.everad.plj		plj
 audio/vnd.lucent.voice		lvp
+audio/vnd.nokia.mobile-xmf	xmf
 audio/vnd.nortel.vbk		vbk
 audio/vnd.nuera.ecelp4800	ecelp4800
 audio/vnd.nuera.ecelp7470	ecelp7470
 audio/vnd.nuera.ecelp9600	ecelp9600
 audio/vnd.octel.sbc
-audio/vnd.qcelp			qcp
+audio/vnd.qcelp
 audio/vnd.rhetorex.32kadpcm
+audio/vnd.sealedmedia.softseal.mpeg	smp3,smp,s1m
 audio/vnd.vmx.cvsd
 audio/x-aiff			aif,aifc,aiff			base64
 audio/x-pn-realaudio-plugin	rpm
@@ -664,8 +710,13 @@ image/vnd.fst
 image/vnd.fujixerox.edmics-mmr
 image/vnd.fujixerox.edmics-rlc
 image/vnd.glocalgraphics.pgb		pgb
+image/vnd.microsoft.icon		ico
 image/vnd.mix
+image/vnd.ms-modi			mdi
 image/vnd.net-fpx
+image/vnd.sealed.png			spng,spn,s1n
+image/vnd.sealedmedia.softseal.gif	sgif,sgi,s1g
+image/vnd.sealedmedia.softseal.jpg	sjpg,sjp,s1j
 image/vnd.svf
 image/vnd.wap.wbmp			wbmp
 image/vnd.xiff
@@ -678,6 +729,7 @@ image/x-rgb				rgb				base64
 image/x-xbitmap				xbm				7bit
 image/x-xpixmap				xpm				8bit
 image/x-xwindowdump			xwd				base64
+message/CPIM
 message/delivery-status
 message/disposition-notification
 message/external-body							8bit
@@ -719,7 +771,9 @@ text/comma-separated-values		csv				8bit
 text/directory
 text/enriched
 text/html				html,htm,htmlx,shtml,htx	8bit
+text/parityfec
 text/plain			txt,asc,c,cc,h,hh,cpp,hpp,dat,hlp	8bit
+text/prs.fallenstein.rst		rst
 text/prs.lines.tag
 text/rfc822-headers
 text/richtext				rtx				8bit
@@ -744,6 +798,7 @@ text/vnd.ms-mediapackage
 text/vnd.net2phone.commcenter.command	ccc
 text/vnd.sun.j2me.app-descriptor	jad				8bit
 text/vnd.wap.si				si
+text/vnd.wap.sl				sl
 text/vnd.wap.wmlscript			wmls
 text/vnd.wap.wml			wml
 text/xml				xml,dtd				8bit
@@ -752,19 +807,41 @@ text/x-setext				etx
 text/x-sgml				sgml,sgm			8bit
 text/x-vCalendar			vcs				8bit
 text/x-vCard				vcf				8bit
+video/BMPEG
+video/BT656
+video/CelB
 video/dl				dl				base64
+video/DV
 video/fli				fli				base64
 video/gl				gl				base64
+video/H261
+video/H263
+video/H263-1998
+video/H263-2000
+video/JPEG
+video/MP1S
+video/MP2P
+video/MP2T
+video/MP4V-ES
 video/mpeg				mp2,mpe,mpeg,mpg		base64
+video/mpeg4-generic
+video/MPV
+video/nv
+video/parityfec
 video/pointer
 video/quicktime				qt,mov				base64
+video/SMPTE292M
 video/vnd.fvt				fvt
 video/vnd.motorola.video
 video/vnd.motorola.videop
 video/vnd.mpegurl			mxu,m4u				8bit
 video/vnd.nokia.interleaved-multimedia	nim
 video/vnd.objectvideo			mp4
-video/vnd.vivo
+video/vnd.sealed.mpeg1			s11
+video/vnd.sealed.mpeg4			smpg,s14
+video/vnd.sealed.sswf			sswf,ssw
+video/vnd.sealedmedia.softseal.mov	smov,smo,s1q
+video/vnd.vivo				viv,vivo
 video/x-ms-asf				asf,asx
 video/x-msvideo				avi				base64
 video/x-sgi-movie			movie				base64

@@ -10,3 +10,4 @@ t/10type.t
 t/11typeol.t
 t/20types.t
 t/30export.t
+META.yml                                 Module meta-data (added by MakeMaker)
