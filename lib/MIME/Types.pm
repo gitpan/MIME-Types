@@ -1,7 +1,7 @@
 
 package MIME::Types;
 use vars '$VERSION';
-$VERSION = '1.15';
+$VERSION = '1.16';
 
 use strict;
 
@@ -203,8 +203,7 @@ CROAK
 
 #-------------------------------------------
 # Internet media type registry is at
-# <http://www.iana.org/assignments/media-types/> and
-# F<ftp://ftp.iana.org/in-notes/iana/assignments/media-types/>.
+# http://www.iana.org/assignments/media-types/
 
 $mime_type_definitions = <<MIMETYPES;
 application/activemessage
@@ -223,6 +222,7 @@ application/DCA-RFT
 application/DEC-DX
 application/dicom
 application/dvcs
+application/ecmascript
 application/EDI-Consent
 application/EDIFACT
 application/EDI-X12
@@ -239,6 +239,7 @@ application/index.vnd
 application/iotp
 application/ipp
 application/isup
+application/javascript		js				8bit
 application/mac-binhex40	hqx				8bit
 application/macwriteii
 application/marc
@@ -284,7 +285,7 @@ application/sgml
 application/sgml-open-catalog	soc
 application/sieve		siv
 application/slate
-application/smil		smi,smil
+application/smil		smi,smil			8bit
 application/timestamp-query
 application/timestamp-reply
 application/toolbook		tbk
@@ -610,7 +611,6 @@ application/x-ideas
 application/x-imagemap		imagemap,imap			8bit
 application/x-java-archive	jar
 application/x-java-jnlp-file	jnlp
-application/x-javascript	js				8bit
 application/x-java-serialized-object	ser
 application/x-java-vm		class
 application/x-koan		skp,skd,skt,skm
