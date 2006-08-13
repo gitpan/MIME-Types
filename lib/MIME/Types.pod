@@ -7,7 +7,7 @@ MIME::Types - Definition of MIME types
 =head1 INHERITANCE
 
  MIME::Types
-   is a Exporter
+   is an Exporter
 
 
 =head1 SYNOPSIS
@@ -45,9 +45,7 @@ Create a new C<MIME::Types> object which manages the data.  In the current
 implementation, it does not matter whether you create this object often
 within your program, but in the future this may change.
 
-=over 4
-
- Option         Defined in  Default
+-Option       --Defined in--Default
  only_complete              <false>
 
 . only_complete BOOLEAN
@@ -136,6 +134,57 @@ Returns a list of all defined mime-types
 =back
 
 
+=head1 FUNCTIONS
+
+The next functions are provided for backward compatibility with MIME::Types
+versions 0.06 and below.  This code originates from Jeff Okamoto
+F<okamoto@corp.hp.com> and others.
+
+B<by_mediatype>(TYPE)
+
+=over 4
+
+This function takes a media type and returns a list or anonymous array of
+anonymous three-element arrays whose values are the file name suffix used to
+identify it, the media type, and a content encoding.
+
+TYPE can be a full type name (contains '/', and will be matched in full),
+a partial type (which is used as regular expression) or a real regular
+expression.
+
+=back
+
+B<by_suffix>(FILENAME|SUFFIX)
+
+=over 4
+
+Like C<mimeTypeOf>, but does not return an C<MIME::Type> object. If the file
++type is unknown, both the returned media type and encoding are empty strings.
+
+I<Example:> use of function by_suffix()
+
+
+ use MIME::Types 'by_suffix';
+ my ($mediatype, $encoding) = by_suffix 'image.gif';
+
+ my $refdata =  by_suffix 'image.gif';
+ my ($mediatype, $encoding) = @$refdata;
+
+=back
+
+B<import_mime_types>
+
+=over 4
+
+This method has been removed: mime-types are only useful if understood
+by many parties.  Therefore, the IANA assigns names which can be used.
+In the table kept by this C<MIME::Types> module all these names, plus
+the most often used termporary names are kept.  When names seem to be
+missing, please contact the maintainer for inclussion.
+
+=back
+
+
 
 
 
@@ -148,7 +197,7 @@ See the Mime::Types website at L<http://perl.overmeer.net/mimetypes/> for more d
 
 =head1 COPYRIGHTS
 
-Module version 1.16.
+Module version 1.17.
 Written by Mark Overmeer (mimetypes@overmeer.net).  See the ChangeLog for
 other contributors.
 

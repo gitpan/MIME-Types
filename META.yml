@@ -1,8 +1,8 @@
 # http://module-build.sourceforge.net/META-spec.html
 #XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
 name:         MIME-Types
-version:      1.16
-version_from: lib/MIME/Types.pm
+version:      1.17
+version_from: version
 installdirs:  site
 requires:
     Test::More:                    0.47

@@ -1,7 +1,7 @@
 
 package MIME::Types;
 use vars '$VERSION';
-$VERSION = '1.16';
+$VERSION = '1.17';
 
 use strict;
 
@@ -272,6 +272,7 @@ application/prs.cww		cw,cww
 application/prs.nprend		rnd,rct
 application/prs.plucker
 application/qsig
+application/rdf+xml		rdf				8bit
 application/reginfo+xml
 application/remote-printing
 application/riscos
@@ -412,6 +413,8 @@ application/vnd.kde.kword	kwd,kwt
 application/vnd.kenameapp	htke
 application/vnd.kidspiration	kia
 application/vnd.Kinar		kne,knp,sdf
+application/vnd.google-earth.kml+xml			kml	8bit
+application/vnd.google-earth.kmz			kmz	8bit
 application/vnd.koan
 application/vnd.liberty-request+xml
 application/vnd.llamagraphics.life-balance.desktop	lbd
