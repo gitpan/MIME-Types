@@ -82,11 +82,11 @@ MIME::Type-E<gt>B<new>(OPTIONS)
 Create (I<instantiate>) a new MIME::Type object which manages one
 mime type.
 
--Option    --Defined in     --Default
+ Option    --Defined in     --Default
  encoding                     <depends on type>
  extensions                   []
  simplified                   <derived from type>
- system                       C<undef>
+ system                       undef
  type                         <required>
 
 . encoding '7bit'|'8bit'|'base64'|'quoted-printable'
@@ -289,7 +289,7 @@ See the Mime::Types website at L<http://perl.overmeer.net/mimetypes/> for more d
 
 =head1 COPYRIGHTS
 
-Module version 1.17.
+Module version 1.18.
 Written by Mark Overmeer (mimetypes@overmeer.net).  See the ChangeLog for
 other contributors.
 

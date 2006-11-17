@@ -45,7 +45,7 @@ Create a new C<MIME::Types> object which manages the data.  In the current
 implementation, it does not matter whether you create this object often
 within your program, but in the future this may change.
 
--Option       --Defined in--Default
+ Option       --Defined in--Default
  only_complete              <false>
 
 . only_complete BOOLEAN
@@ -197,7 +197,7 @@ See the Mime::Types website at L<http://perl.overmeer.net/mimetypes/> for more d
 
 =head1 COPYRIGHTS
 
-Module version 1.17.
+Module version 1.18.
 Written by Mark Overmeer (mimetypes@overmeer.net).  See the ChangeLog for
 other contributors.
 
