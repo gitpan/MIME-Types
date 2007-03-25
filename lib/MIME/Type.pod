@@ -1,9 +1,6 @@
-
 =head1 NAME
 
 MIME::Type - Definition of one MIME type
-
-
 
 =head1 SYNOPSIS
 
@@ -24,7 +21,6 @@ MIME::Type - Definition of one MIME type
 
  print MIME::Type->simplified('x-appl/x-zip') #  'appl/zip'
 
-
 =head1 DESCRIPTION
 
 MIME types are used in MIME entities, for instance as part of e-mail
@@ -36,9 +32,7 @@ It follows the official IANA registry at
 F<http://www.iana.org/assignments/media-types/>
 and the collection kept at F<http://www.ltsw.se/knbase/internet/mime.htp>
 
-
 =head1 OVERLOADED
-
 
 overload: B<string comparison>
 
@@ -61,19 +55,15 @@ returns.
 
 I<Example:> use of stringification
 
-
  my $mime = MIME::Type->new('text/html');
  print "$mime\n";   # explicit stringification
  print $mime;       # implicit stringification
 
 =back
 
-
 =head1 METHODS
 
-
 =head2 Initiation
-
 
 MIME::Type-E<gt>B<new>(OPTIONS)
 
@@ -82,12 +72,12 @@ MIME::Type-E<gt>B<new>(OPTIONS)
 Create (I<instantiate>) a new MIME::Type object which manages one
 mime type.
 
- Option    --Defined in     --Default
- encoding                     <depends on type>
- extensions                   []
- simplified                   <derived from type>
- system                       undef
- type                         <required>
+ Option    --Default
+ encoding    <depends on type>
+ extensions  []
+ simplified  <derived from type>
+ system      undef
+ type        <required>
 
 . encoding '7bit'|'8bit'|'base64'|'quoted-printable'
 
@@ -141,7 +131,6 @@ upper-case.
 
 =head2 Attributes
 
-
 $obj-E<gt>B<encoding>
 
 =over 4
@@ -174,7 +163,6 @@ of the type.
 
 I<Example:> results of simplified()
 
-
  my $mime = MIME::Type->new(type => 'x-appl/x-zip');
  print $mime->simplified;                     # 'appl/zip'
  print $mime->simplified('text/plain');       # 'text/plain'
@@ -200,7 +188,6 @@ Returns the long type of this object, for instance C<'text/plain'>
 =back
 
 =head2 Knowledge
-
 
 $obj-E<gt>B<equals>(STRING|MIME)
 
@@ -268,9 +255,6 @@ For C<'text/plain'> it will return C<'plain'>.
 
 =back
 
-
-
-
 =head1 DIAGNOSTICS
 
 I<Error:> Type parameter is obligatory.
@@ -278,23 +262,16 @@ I<Error:> Type parameter is obligatory.
 When a L<MIME::Type|MIME::Type> object is created, the type itself must be
 specified with the C<type> option flag.
 
+=head1 SEE ALSO
 
+This module is part of MIME-Types distribution version 1.19,
+built on March 25, 2007. Website: F<http://perl.overmeer.net/mimetypes/>
 
+=head1 LICENSE
 
+Copyrights 1999,2001-2007 by Mark Overmeer.For other contributors see ChangeLog.
 
-
-=head1 REFERENCES
-
-See the Mime::Types website at L<http://perl.overmeer.net/mimetypes/> for more details.
-
-=head1 COPYRIGHTS
-
-Module version 1.18.
-Written by Mark Overmeer (mimetypes@overmeer.net).  See the ChangeLog for
-other contributors.
-
-Copyright (c) 2001-2003 by the author(s). All rights reserved.  This program
-is free software; you can redistribute it and/or modify it under the
-same terms as Perl itself.
-
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
+See F<http://www.perl.com/perl/misc/Artistic.html>
 

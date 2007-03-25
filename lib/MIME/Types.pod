@@ -1,14 +1,11 @@
-
 =head1 NAME
 
 MIME::Types - Definition of MIME types
-
 
 =head1 INHERITANCE
 
  MIME::Types
    is an Exporter
-
 
 =head1 SYNOPSIS
 
@@ -16,7 +13,6 @@ MIME::Types - Definition of MIME types
  my $mimetypes = MIME::Types->new;
  my MIME::Type $plaintext = $mimetypes->type('text/plain');
  my MIME::Type $imagegif  = $mimetypes->mimeTypeOf('gif');
-
 
 =head1 DESCRIPTION
 
@@ -29,13 +25,9 @@ each describe one known mime type.  There are many types defined
 by RFCs and vendors, so the list is long but not complete.  Please
 don't hestitate to ask to add additional information.
 
-
-
 =head1 METHODS
 
-
 =head2 Instantiation
-
 
 MIME::Types-E<gt>B<new>(OPTIONS)
 
@@ -45,8 +37,8 @@ Create a new C<MIME::Types> object which manages the data.  In the current
 implementation, it does not matter whether you create this object often
 within your program, but in the future this may change.
 
- Option       --Defined in--Default
- only_complete              <false>
+ Option       --Default
+ only_complete  <false>
 
 . only_complete BOOLEAN
 
@@ -65,7 +57,6 @@ information.
 =back
 
 =head2 Knowledge
-
 
 $obj-E<gt>B<addType>(TYPE, ...)
 
@@ -104,7 +95,6 @@ In that case, one of the alternatives is chosen at random.
 
 I<Example:> use of mimeTypeOf()
 
-
  my MIME::Types $types = MIME::Types->new;
  my MIME::Type  $mime = $types->mimeTypeOf('gif');
 
@@ -132,7 +122,6 @@ $obj-E<gt>B<types>
 Returns a list of all defined mime-types
 
 =back
-
 
 =head1 FUNCTIONS
 
@@ -163,7 +152,6 @@ Like C<mimeTypeOf>, but does not return an C<MIME::Type> object. If the file
 
 I<Example:> use of function by_suffix()
 
-
  use MIME::Types 'by_suffix';
  my ($mediatype, $encoding) = by_suffix 'image.gif';
 
@@ -184,25 +172,16 @@ missing, please contact the maintainer for inclussion.
 
 =back
 
+=head1 SEE ALSO
 
+This module is part of MIME-Types distribution version 1.19,
+built on March 25, 2007. Website: F<http://perl.overmeer.net/mimetypes/>
 
+=head1 LICENSE
 
+Copyrights 1999,2001-2007 by Mark Overmeer.For other contributors see ChangeLog.
 
-
-
-
-=head1 REFERENCES
-
-See the Mime::Types website at L<http://perl.overmeer.net/mimetypes/> for more details.
-
-=head1 COPYRIGHTS
-
-Module version 1.18.
-Written by Mark Overmeer (mimetypes@overmeer.net).  See the ChangeLog for
-other contributors.
-
-Copyright (c) 2001-2003 by the author(s). All rights reserved.  This program
-is free software; you can redistribute it and/or modify it under the
-same terms as Perl itself.
-
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
+See F<http://www.perl.com/perl/misc/Artistic.html>
 
