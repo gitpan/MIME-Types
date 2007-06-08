@@ -40,7 +40,7 @@ within your program, but in the future this may change.
  Option       --Default
  only_complete  <false>
 
-. only_complete BOOLEAN
+. only_complete => BOOLEAN
 
 =over 4
 
@@ -174,12 +174,12 @@ missing, please contact the maintainer for inclussion.
 
 =head1 SEE ALSO
 
-This module is part of MIME-Types distribution version 1.19,
-built on March 25, 2007. Website: F<http://perl.overmeer.net/mimetypes/>
+This module is part of MIME-Types distribution version 1.20,
+built on June 08, 2007. Website: F<http://perl.overmeer.net/mimetypes/>
 
 =head1 LICENSE
 
-Copyrights 1999,2001-2007 by Mark Overmeer.For other contributors see ChangeLog.
+Copyrights 1999,2001-2007 by Mark Overmeer. For other contributors see ChangeLog.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
