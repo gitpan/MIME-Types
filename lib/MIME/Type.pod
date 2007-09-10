@@ -2,6 +2,8 @@
 
 MIME::Type - Definition of one MIME type
 
+=head1 INHERITANCE
+
 =head1 SYNOPSIS
 
  use MIME::Types;
@@ -53,7 +55,7 @@ The stringification (use of the object in a place where a string
 is required) will result in the type name, the same as L<type()|MIME::Type/"Attributes">
 returns.
 
-I<Example:> use of stringification
+example: use of stringification
 
  my $mime = MIME::Type->new('text/html');
  print "$mime\n";   # explicit stringification
@@ -161,7 +163,7 @@ carry an C<x-> preamble to indicate that.  Of course, after recognition,
 the C<x-> can disappear.  In many cases, we prefer the simplified version
 of the type.
 
-I<Example:> results of simplified()
+example: results of simplified()
 
  my $mime = MIME::Type->new(type => 'x-appl/x-zip');
  print $mime->simplified;                     # 'appl/zip'
@@ -257,15 +259,19 @@ For C<'text/plain'> it will return C<'plain'>.
 
 =head1 DIAGNOSTICS
 
-I<Error:> Type parameter is obligatory.
+Error: Type parameter is obligatory.
+
+=over 4
 
 When a L<MIME::Type|MIME::Type> object is created, the type itself must be
 specified with the C<type> option flag.
 
+=back
+
 =head1 SEE ALSO
 
-This module is part of MIME-Types distribution version 1.20,
-built on June 08, 2007. Website: F<http://perl.overmeer.net/mimetypes/>
+This module is part of MIME-Types distribution version 1.21,
+built on September 10, 2007. Website: F<http://perl.overmeer.net/mimetypes/>
 
 =head1 LICENSE
 

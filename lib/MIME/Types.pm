@@ -1,11 +1,11 @@
 # Copyrights 1999,2001-2007 by Mark Overmeer.
 #  For other contributors see ChangeLog.
 # See the manual pages for details on the licensing terms.
-# Pod stripped from pm file by OODoc 1.00.
+# Pod stripped from pm file by OODoc 1.02.
 
 package MIME::Types;
 use vars '$VERSION';
-$VERSION = '1.20';
+$VERSION = '1.21';
 
 use strict;
 
@@ -754,7 +754,7 @@ image/cgm
 image/g3fax
 image/gif			gif				base64
 image/ief			ief				base64
-image/jp2			jp2,jpg2
+image/jp2			jp2,jpg2			base64
 image/jpeg			jpeg,jpg,jpe			base64
 image/jpm			jpm,jpgm
 image/jpx			jpf,jpx
@@ -935,6 +935,9 @@ x-world/x-vrml				wrl,vrml
 
 vms:text/plain				doc				8bit
 mac:application/x-macbase64		bin
+
+# IE6 bug
+image/pjpeg								base64
 
 __MIMETYPES__
 

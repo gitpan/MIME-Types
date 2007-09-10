@@ -1,6 +1,5 @@
 ChangeLog
 MANIFEST
-META.yml                                 Module meta-data (added by MakeMaker)
 Makefile.PL
 README
 lib/MIME/Type.pm
@@ -12,3 +11,4 @@ t/11typeol.t
 t/20types.t
 t/30export.t
 t/pod.t
+META.yml                                 Module meta-data (added by MakeMaker)
