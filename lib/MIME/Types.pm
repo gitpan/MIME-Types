@@ -1,19 +1,16 @@
 # Copyrights 1999,2001-2007 by Mark Overmeer.
 #  For other contributors see ChangeLog.
 # See the manual pages for details on the licensing terms.
-# Pod stripped from pm file by OODoc 1.02.
+# Pod stripped from pm file by OODoc 1.03.
 
 package MIME::Types;
 use vars '$VERSION';
-$VERSION = '1.21';
+$VERSION = '1.22';
 
 use strict;
 
 use MIME::Type ();
 use Carp;
-
-
-#-------------------------------------------
 
 
 my %list;
@@ -841,7 +838,8 @@ multipart/x-ustar
 multipart/x-www-form-urlencoded
 multipart/x-zip
 text/calendar
-text/comma-separated-values		csv				8bit
+text/csv				csv				8bit
+text/comma-separated-values						8bit
 text/css				css				8bit
 text/directory
 text/enriched
