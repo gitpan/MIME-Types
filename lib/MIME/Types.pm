@@ -5,7 +5,7 @@
 
 package MIME::Types;
 use vars '$VERSION';
-$VERSION = '1.22';
+$VERSION = '1.23';
 
 use strict;
 
@@ -625,7 +625,7 @@ application/x-mac-compactpro	cpt
 application/x-maker		frm,maker,frame,fm,fb,book,fbdoc
 application/x-mathcad	# mcd, but there is also vnd.mcd
 application/x-mif		mif
-application/xml			xml xsl				8bit
+application/xml			xml,xsl				8bit
 application/xml-dtd		dtd				8bit
 application/xml-external-parsed-entity
 application/x-msaccess			mda,mdb,mde,mdf		base64
