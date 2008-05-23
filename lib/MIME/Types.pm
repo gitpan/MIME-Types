@@ -1,11 +1,12 @@
-# Copyrights 1999,2001-2007 by Mark Overmeer.
+# Copyrights 1999,2001-2008 by Mark Overmeer.
 #  For other contributors see ChangeLog.
 # See the manual pages for details on the licensing terms.
-# Pod stripped from pm file by OODoc 1.03.
+# Pod stripped from pm file by OODoc 1.04.
 
 package MIME::Types;
 use vars '$VERSION';
-$VERSION = '1.23';
+$VERSION = '1.24';
+
 
 use strict;
 
@@ -414,7 +415,7 @@ application/vnd.kde.kspread	ksp
 application/vnd.kde.kword	kwd,kwt
 application/vnd.kenameapp	htke
 application/vnd.kidspiration	kia
-application/vnd.Kinar		kne,knp,sdf
+application/vnd.Kinar		kne,knp
 application/vnd.google-earth.kml+xml			kml	8bit
 application/vnd.google-earth.kmz			kmz	8bit
 application/vnd.koan
@@ -477,7 +478,22 @@ application/vnd.nokia.radio-presets	rpss
 application/vnd.novadigm.EDM
 application/vnd.novadigm.EDX
 application/vnd.novadigm.EXT
+application/vnd.oasis.opendocument.text			odt
+application/vnd.oasis.opendocument.text-template	ott
+application/vnd.oasis.opendocument.text-web		oth
+application/vnd.oasis.opendocument.text-master		odm
+application/vnd.oasis.opendocument.graphics		odg
+application/vnd.oasis.opendocument.graphics-template	otg
+application/vnd.oasis.opendocument.presentation		odp
+application/vnd.oasis.opendocument.presentation-template	otp
+application/vnd.oasis.opendocument.spreadsheet		ods
+application/vnd.oasis.opendocument.spreadsheet-template	ots
+application/vnd.oasis.opendocument.chart		odc
+application/vnd.oasis.opendocument.formula		odf
+application/vnd.oasis.opendocument.database		odb
+application/vnd.oasis.opendocument.image		odi
 application/vnd.obn
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet xlsx quoted-printable
 application/vnd.osa.netdeploy
 application/vnd.palm		prc,pdb,pqa,oprc
 application/vnd.paos.xml
@@ -516,6 +532,13 @@ application/vnd.smaf			mmf
 application/vnd.sss-cod
 application/vnd.sss-dtf
 application/vnd.sss-ntf
+application/vnd.stardivision.chart	sds
+application/vnd.stardivision.calc	sdc
+application/vnd.stardivision.writer	sdw
+application/vnd.stardivision.writer-global	sgl
+application/vnd.stardivision.draw	sda
+application/vnd.stardivision.impress	sdd
+application/vnd.stardivision.math	sdf
 application/vnd.street-stream
 application/vnd.sun.xml.calc		sxc
 application/vnd.sun.xml.calc.template	stc
@@ -802,7 +825,7 @@ message/external-body							8bit
 message/http
 message/news								8bit
 message/partial								8bit
-message/rfc822								8bit
+message/rfc822				eml				8bit
 message/s-http
 message/sip
 message/sipfrag
