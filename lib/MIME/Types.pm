@@ -1,11 +1,11 @@
 # Copyrights 1999,2001-2008 by Mark Overmeer.
 #  For other contributors see ChangeLog.
 # See the manual pages for details on the licensing terms.
-# Pod stripped from pm file by OODoc 1.04.
+# Pod stripped from pm file by OODoc 1.05.
 
 package MIME::Types;
 use vars '$VERSION';
-$VERSION = '1.24';
+$VERSION = '1.25';
 
 
 use strict;
@@ -242,6 +242,7 @@ application/index.vnd
 application/iotp
 application/ipp
 application/isup
+application/json		json				8bit
 application/javascript		js				8bit
 application/mac-binhex40	hqx				8bit
 application/macwriteii
@@ -899,6 +900,7 @@ text/vnd.wap.wmlscript			wmls
 text/vnd.wap.wml			wml
 text/xml-external-parsed-entity
 text/xml
+text/x-component			htc				8bit
 text/x-setext				etx
 text/x-sgml				sgml,sgm			8bit
 text/x-vCalendar			vcs				8bit
