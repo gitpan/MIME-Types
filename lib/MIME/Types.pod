@@ -178,12 +178,12 @@ missing, please contact the maintainer for inclussion.
 
 =head1 SEE ALSO
 
-This module is part of MIME-Types distribution version 1.26,
-built on December 17, 2008. Website: F<http://perl.overmeer.net/mimetypes/>
+This module is part of MIME-Types distribution version 1.27,
+built on February 03, 2009. Website: F<http://perl.overmeer.net/mimetypes/>
 
 =head1 LICENSE
 
-Copyrights 1999,2001-2008 by Mark Overmeer. For other contributors see ChangeLog.
+Copyrights 1999,2001-2009 by Mark Overmeer. For other contributors see ChangeLog.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

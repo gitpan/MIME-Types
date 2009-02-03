@@ -1,11 +1,11 @@
-# Copyrights 1999,2001-2008 by Mark Overmeer.
+# Copyrights 1999,2001-2009 by Mark Overmeer.
 #  For other contributors see ChangeLog.
 # See the manual pages for details on the licensing terms.
-# Pod stripped from pm file by OODoc 1.05.
+# Pod stripped from pm file by OODoc 1.06.
 
 package MIME::Types;
 use vars '$VERSION';
-$VERSION = '1.26';
+$VERSION = '1.27';
 
 
 use strict;
@@ -255,7 +255,7 @@ application/ocsp-request	orq
 application/ocsp-response	ors
 application/octet-stream bin,dms,lha,lzh,exe,class,ani,pgp,so,dll,dmg	base64
 application/oda			oda
-application/ogg			ogg
+application/ogg			ogx
 application/parityfec
 application/pdf			pdf				base64
 application/pgp-encrypted					7bit
@@ -743,6 +743,7 @@ audio/MPA
 audio/mpa-robust
 audio/mpeg4-generic
 audio/mpeg			mpga,mp2,mp3			base64
+audio/ogg			ogg,oga
 audio/parityfec
 audio/PCMA
 audio/PCMU
@@ -938,6 +939,7 @@ video/mpeg4-generic
 video/mpeg				mp2,mpe,mpeg,mpg		base64
 video/MPV
 video/nv
+video/ogg				ogv
 video/parityfec
 video/pointer
 video/quicktime				qt,mov				base64
