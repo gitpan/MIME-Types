@@ -5,7 +5,7 @@
 
 package MIME::Types;
 use vars '$VERSION';
-$VERSION = '1.27';
+$VERSION = '1.28';
 
 
 use strict;
@@ -169,6 +169,8 @@ sub by_suffix($)
 sub by_mediatype($)
 {   my $type = shift;
     my @found;
+
+    %list or init {};
 
     if(index($type, '/') >= 0)
     {   my $simplified = MIME::Type->simplified($type);

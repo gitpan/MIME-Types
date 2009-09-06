@@ -178,8 +178,8 @@ missing, please contact the maintainer for inclussion.
 
 =head1 SEE ALSO
 
-This module is part of MIME-Types distribution version 1.27,
-built on February 03, 2009. Website: F<http://perl.overmeer.net/mimetypes/>
+This module is part of MIME-Types distribution version 1.28,
+built on September 07, 2009. Website: F<http://perl.overmeer.net/mimetypes/>
 
 =head1 LICENSE
 
