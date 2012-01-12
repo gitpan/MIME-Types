@@ -4,7 +4,7 @@
 # Pod stripped from pm file by OODoc 2.00.
 package MIME::Type;
 use vars '$VERSION';
-$VERSION = '1.33';
+$VERSION = '1.34';
 
 
 use strict;
@@ -79,7 +79,7 @@ sub mediaType() {shift->{MT_simplified} =~ m!^([\w.-]+)/! ? $1 : undef}
 sub mainType()  {shift->mediaType} # Backwards compatibility
 
 
-sub subType() {shift->{MT_simplified} =~ m!/([\w.-]+)$! ? $1 : undef}
+sub subType() {shift->{MT_simplified} =~ m!/([\w+.-]+)$! ? $1 : undef}
 
 
 sub isRegistered()
