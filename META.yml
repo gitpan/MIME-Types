@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               MIME-Types
-version:            1.32
+version:            1.33
 abstract:           Definition of MIME types
 author:
     - Mark Overmeer

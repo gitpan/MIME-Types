@@ -36,14 +36,14 @@ and the collection kept at F<http://www.ltsw.se/knbase/internet/mime.htp>
 
 =over 4
 
-=item overload: B<string comparison>
+=item overload: B<string comparison>()
 
 When a MIME::Type object is compared to either a string or another
 MIME::TYpe, the L<equals()|MIME::Type/"Knowledge"> method is called.  Comparison is smart,
 which means that it extends common string comparison with some
 features which are defined in the related RFCs.
 
-=item overload: B<stringification>
+=item overload: B<stringification>()
 
 The stringification (use of the object in a place where a string
 is required) will result in the type name, the same as L<type()|MIME::Type/"Attributes">
@@ -113,12 +113,12 @@ upper-case.
 
 =over 4
 
-=item $obj-E<gt>B<encoding>
+=item $obj-E<gt>B<encoding>()
 
 Returns the type of encoding which is required to transport data of this
 type safely.
 
-=item $obj-E<gt>B<extensions>
+=item $obj-E<gt>B<extensions>()
 
 Returns a list of extensions which are known to be used for this
 mime type.
@@ -140,12 +140,12 @@ example: results of simplified()
  print $mime->simplified('text/plain');       # 'text/plain'
  print MIME::Type->simplified('x-xyz/x-abc'); # 'xyz/abc'
 
-=item $obj-E<gt>B<system>
+=item $obj-E<gt>B<system>()
 
 Returns the regular expression which can be used to determine whether this
 type is active on the system where you are working on.
 
-=item $obj-E<gt>B<type>
+=item $obj-E<gt>B<type>()
 
 Returns the long type of this object, for instance C<'text/plain'>
 
@@ -160,27 +160,27 @@ Returns the long type of this object, for instance C<'text/plain'>
 Compare this mime-type object with a STRING or other object.  In case of
 a STRING, simplification will take place.
 
-=item $obj-E<gt>B<isAscii>
+=item $obj-E<gt>B<isAscii>()
 
 Returns false when the encoding is base64, and true otherwise.  All encodings
 except base64 are text encodings.
 
-=item $obj-E<gt>B<isBinary>
+=item $obj-E<gt>B<isBinary>()
 
 Returns true when the encoding is base64.
 
-=item $obj-E<gt>B<isRegistered>
+=item $obj-E<gt>B<isRegistered>()
 
 Mime-types which are not registered by IANA nor defined in RFCs shall
 start with an C<x->.  This counts for as well the media-type as the
 sub-type.  In case either one of the types starts with C<x-> this
 method will return false.
 
-=item $obj-E<gt>B<isSignature>
+=item $obj-E<gt>B<isSignature>()
 
 Returns true when the type is in the list of known signatures.
 
-=item $obj-E<gt>B<mediaType>
+=item $obj-E<gt>B<mediaType>()
 
 The media type of the simplified mime.
 For C<'text/plain'> it will return C<'text'>.
@@ -188,7 +188,7 @@ For C<'text/plain'> it will return C<'text'>.
 For historical reasons, the C<'mainType'> method still can be used
 to retreive the same value.  However, that method is deprecated.
 
-=item $obj-E<gt>B<subType>
+=item $obj-E<gt>B<subType>()
 
 The sub type of the simplified mime.
 For C<'text/plain'> it will return C<'plain'>.
@@ -208,12 +208,12 @@ specified with the C<type> option flag.
 
 =head1 SEE ALSO
 
-This module is part of MIME-Types distribution version 1.32,
-built on August 18, 2011. Website: F<http://perl.overmeer.net/mimetypes/>
+This module is part of MIME-Types distribution version 1.33,
+built on January 12, 2012. Website: F<http://perl.overmeer.net/mimetypes/>
 
 =head1 LICENSE
 
-Copyrights 1999,2001-2011 by Mark Overmeer. For other contributors see ChangeLog.
+Copyrights 1999,2001-2012 by Mark Overmeer. For other contributors see ChangeLog.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

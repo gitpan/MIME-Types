@@ -1,10 +1,10 @@
-# Copyrights 1999,2001-2011 by Mark Overmeer.
+# Copyrights 1999,2001-2012 by Mark Overmeer.
 #  For other contributors see ChangeLog.
 # See the manual pages for details on the licensing terms.
 # Pod stripped from pm file by OODoc 2.00.
 package MIME::Type;
 use vars '$VERSION';
-$VERSION = '1.32';
+$VERSION = '1.33';
 
 
 use strict;
@@ -51,8 +51,6 @@ sub init($)
 
 sub type() {shift->{MT_type}}
 
-#-------------------------------------------
-
 
 sub simplified(;$)
 {   my $thing = shift;
@@ -65,17 +63,11 @@ sub simplified(;$)
     : undef;
 }
 
-#-------------------------------------------
-
 
 sub extensions() { @{shift->{MT_extensions}} }
 
-#-------------------------------------------
-
 
 sub encoding() {shift->{MT_encoding}}
-
-#-------------------------------------------
 
 
 sub system() {shift->{MT_system}}
@@ -83,15 +75,11 @@ sub system() {shift->{MT_system}}
 #-------------------------------------------
 
 
-sub mediaType() {shift->{MT_simplified} =~ m!^([\w-]+)/! ? $1 : undef}
+sub mediaType() {shift->{MT_simplified} =~ m!^([\w.-]+)/! ? $1 : undef}
 sub mainType()  {shift->mediaType} # Backwards compatibility
 
-#-------------------------------------------
 
-
-sub subType() {shift->{MT_simplified} =~ m!/([\w-]+)$! ? $1 : undef}
-
-#-------------------------------------------
+sub subType() {shift->{MT_simplified} =~ m!/([\w.-]+)$! ? $1 : undef}
 
 
 sub isRegistered()
@@ -100,17 +88,10 @@ sub isRegistered()
 }
 
 
-#-------------------------------------------
-
-
 sub isBinary() { shift->{MT_encoding} eq 'base64' }
-
-#-------------------------------------------
 
 
 sub isAscii() { shift->{MT_encoding} ne 'base64' }
-
-#-------------------------------------------
 
 
 # simplified names only!
@@ -120,8 +101,6 @@ my %sigs = map { ($_ => 1) }
      text/vCard);
 
 sub isSignature() { $sigs{shift->{MT_simplified}} }
-
-#-------------------------------------------
 
 
 sub equals($)

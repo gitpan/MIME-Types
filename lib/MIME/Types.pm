@@ -1,11 +1,11 @@
-# Copyrights 1999,2001-2011 by Mark Overmeer.
+# Copyrights 1999,2001-2012 by Mark Overmeer.
 #  For other contributors see ChangeLog.
 # See the manual pages for details on the licensing terms.
 # Pod stripped from pm file by OODoc 2.00.
 
 package MIME::Types;
 use vars '$VERSION';
-$VERSION = '1.32';
+$VERSION = '1.33';
 
 
 use strict;
@@ -526,13 +526,13 @@ application/vnd.oasis.opendocument.text-master;odm
 application/vnd.oasis.opendocument.text-template;ott
 application/vnd.oasis.opendocument.text-web;oth
 application/vnd.obn
-application/vnd.openxmlformats-officedocument.presentationml.presentation;pptx
-application/vnd.openxmlformats-officedocument.presentationml.slideshow;ppsx
-application/vnd.openxmlformats-officedocument.presentationml.template;potx
+application/vnd.openxmlformats-officedocument.presentationml.presentation;pptx;binary
+application/vnd.openxmlformats-officedocument.presentationml.slideshow;ppsx;binary
+application/vnd.openxmlformats-officedocument.presentationml.template;potx;binary
 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;xlsx;binary
-application/vnd.openxmlformats-officedocument.spreadsheetml.template;xltx
-application/vnd.openxmlformats-officedocument.wordprocessingml.document;docx
-application/vnd.openxmlformats-officedocument.wordprocessingml.template;dotx
+application/vnd.openxmlformats-officedocument.spreadsheetml.template;xltx;binary
+application/vnd.openxmlformats-officedocument.wordprocessingml.document;docx;binary
+application/vnd.openxmlformats-officedocument.wordprocessingml.template;dotx;binary
 application/vnd.osa.netdeploy
 application/vnd.palm;prc,pdb,pqa,oprc
 application/vnd.paos.xml

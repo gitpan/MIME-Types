@@ -16,6 +16,19 @@ MIME::Types - Definition of MIME types
 
 =head1 DESCRIPTION
 
+MIME types are used in MIME compliant lines, for instance as part
+of e-mail and HTTP traffic, to indicate the type of content which is
+transmitted.  Sometimes real knowledge about a mime-type is need.
+
+This module maintains a set of L<MIME::Type|MIME::Type> objects, which
+each describe one known mime type.  There are many types defined
+by RFCs and vendors, so the list is long but not complete.  Please
+don't hestitate to ask to add additional information.
+
+If you wish to get access to the C<mime.types> files, which are
+available on various places in UNIX and Linux systems, then have a
+look at File::TypeInfo.
+
 =head2 MIME::Types and mod_perl
 
 This module uses a DATA handle to read all the types at first
@@ -39,19 +52,6 @@ initialized before you start forking. So, first call
 Later, each time you create this object (you may, of course, also reuse
 the object you create here) you will get access to the same global table
 of types.
-
-MIME types are used in MIME compliant lines, for instance as part
-of e-mail and HTTP traffic, to indicate the type of content which is
-transmitted.  Sometimes real knowledge about a mime-type is need.
-
-This module maintains a set of L<MIME::Type|MIME::Type> objects, which
-each describe one known mime type.  There are many types defined
-by RFCs and vendors, so the list is long but not complete.  Please
-don't hestitate to ask to add additional information.
-
-If you wish to get access to the C<mime.types> files, which are
-available on various places in UNIX and Linux systems, then have a
-look at File::TypeInfo.
 
 =head1 METHODS
 
@@ -100,7 +100,7 @@ was produced when an unknown IANA type was added.  This has been
 removed, because some people need that to get their application
 to work locally... broken applications...
 
-=item $obj-E<gt>B<extensions>
+=item $obj-E<gt>B<extensions>()
 
 Returns a list of all defined extensions.
 
@@ -129,7 +129,7 @@ this type, and different operating systems may cause more than one
 C<MIME::Type> object to be defined.  In scalar context, only the first
 is returned.
 
-=item $obj-E<gt>B<types>
+=item $obj-E<gt>B<types>()
 
 Returns a list of all defined mime-types
 
@@ -166,7 +166,7 @@ example: use of function by_suffix()
  my $refdata =  by_suffix 'image.gif';
  my ($mediatype, $encoding) = @$refdata;
 
-=item B<import_mime_types>
+=item B<import_mime_types>()
 
 This method has been removed: mime-types are only useful if understood
 by many parties.  Therefore, the IANA assigns names which can be used.
@@ -178,12 +178,12 @@ missing, please contact the maintainer for inclussion.
 
 =head1 SEE ALSO
 
-This module is part of MIME-Types distribution version 1.32,
-built on August 18, 2011. Website: F<http://perl.overmeer.net/mimetypes/>
+This module is part of MIME-Types distribution version 1.33,
+built on January 12, 2012. Website: F<http://perl.overmeer.net/mimetypes/>
 
 =head1 LICENSE
 
-Copyrights 1999,2001-2011 by Mark Overmeer. For other contributors see ChangeLog.
+Copyrights 1999,2001-2012 by Mark Overmeer. For other contributors see ChangeLog.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
