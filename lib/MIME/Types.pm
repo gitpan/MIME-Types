@@ -5,7 +5,7 @@
 
 package MIME::Types;
 use vars '$VERSION';
-$VERSION = '1.35';
+$VERSION = '1.36';
 
 
 use strict;
@@ -526,13 +526,13 @@ application/vnd.oasis.opendocument.text-master;odm
 application/vnd.oasis.opendocument.text-template;ott
 application/vnd.oasis.opendocument.text-web;oth
 application/vnd.obn
-application/vnd.openxmlformats-officedocument.presentationml.presentation;pptx;binary
-application/vnd.openxmlformats-officedocument.presentationml.slideshow;ppsx;binary
-application/vnd.openxmlformats-officedocument.presentationml.template;potx;binary
-application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;xlsx;binary
-application/vnd.openxmlformats-officedocument.spreadsheetml.template;xltx;binary
-application/vnd.openxmlformats-officedocument.wordprocessingml.document;docx;binary
-application/vnd.openxmlformats-officedocument.wordprocessingml.template;dotx;binary
+application/vnd.openxmlformats-officedocument.presentationml.presentation;pptx;base64
+application/vnd.openxmlformats-officedocument.presentationml.slideshow;ppsx;base64
+application/vnd.openxmlformats-officedocument.presentationml.template;potx;base64
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;xlsx;base64
+application/vnd.openxmlformats-officedocument.spreadsheetml.template;xltx;base64
+application/vnd.openxmlformats-officedocument.wordprocessingml.document;docx;base64
+application/vnd.openxmlformats-officedocument.wordprocessingml.template;dotx;base64
 application/vnd.osa.netdeploy
 application/vnd.palm;prc,pdb,pqa,oprc
 application/vnd.paos.xml
