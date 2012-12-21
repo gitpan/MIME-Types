@@ -5,7 +5,7 @@
 
 package MIME::Types;
 use vars '$VERSION';
-$VERSION = '1.36';
+$VERSION = '1.37';
 
 
 use strict;
@@ -1118,7 +1118,6 @@ text/x-makefile
 text/x-moc;moc
 text/x-pascal;p,pas
 text/x-pcs-gcd;gcd
-text/x-perl;pl,pm
 text/x-python;py
 text/x-scala;scala
 text/x-server-parsed-html
