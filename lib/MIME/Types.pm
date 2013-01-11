@@ -1,11 +1,11 @@
-# Copyrights 1999,2001-2012 by [Mark Overmeer].
+# Copyrights 1999,2001-2013 by [Mark Overmeer].
 #  For other contributors see ChangeLog.
 # See the manual pages for details on the licensing terms.
 # Pod stripped from pm file by OODoc 2.00.
 
 package MIME::Types;
 use vars '$VERSION';
-$VERSION = '1.37';
+$VERSION = '1.38';
 
 
 use strict;
@@ -481,15 +481,19 @@ application/vnd.motorola.flexsuite.wem
 application/vnd.mozilla.xul+xml;xul
 application/vnd.ms-artgalry;cil
 application/vnd.ms-asf;asf
-application/vnd.ms-excel;xls,xlt,xlb;base64
+application/vnd.ms-excel;xls,xlt,xlb,xla;base64
+application/vnd.ms-excel.addin.macroEnabled.12;xlam
 application/vnd.ms-excel.sheet.binary.macroEnabled.12;xlsb
 application/vnd.ms-excel.sheet.macroEnabled.12;xlsm
+application/vnd.ms-excel.template.macroEnabled.12;xltm
 application/vnd.ms-lrm;lrm
 application/vnd.ms-pki.seccat;cat
 application/vnd.ms-pki.stl;stl
-application/vnd.ms-powerpoint;ppt,pps,pot;base64
+application/vnd.ms-powerpoint;ppt,pps,pot,ppa;base64
+application/vnd.ms-powerpoint.addin.macroEnabled.12;ppam
 application/vnd.ms-powerpoint.presentation.macroEnabled.12;pptm
 application/vnd.ms-powerpoint.slideshow.macroEnabled.12;ppsm
+application/vnd.ms-powerpoint.template.macroEnabled.12;potm
 application/vnd.ms-project;mpp;base64
 application/vnd.ms-tnef;;base64
 application/vnd.ms-word.document.macroEnabled.12;docm
