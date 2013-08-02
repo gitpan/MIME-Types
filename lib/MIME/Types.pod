@@ -1,3 +1,5 @@
+=encoding utf8
+
 =head1 NAME
 
 MIME::Types - Definition of MIME types
@@ -10,9 +12,9 @@ MIME::Types - Definition of MIME types
 =head1 SYNOPSIS
 
  use MIME::Types;
- my $mimetypes = MIME::Types->new;
- my MIME::Type $def = $mimetypes->type('text/plain');
- my MIME::Type $def = $mimetypes->mimeTypeOf('gif');
+ my $mimetypes = MIME::Types->new(...);      # MIME::Types object
+ my $type = $mimetypes->type('text/plain');  # MIME::Type  object
+ my $type = $mimetypes->mimeTypeOf('gif');
 
 =head1 DESCRIPTION
 
@@ -20,42 +22,24 @@ MIME types are used in MIME compliant lines, for instance as part
 of e-mail and HTTP traffic, to indicate the type of content which is
 transmitted.  Sometimes real knowledge about a mime-type is need.
 
-This module maintains a set of L<MIME::Type|MIME::Type> objects, which
-each describe one known mime type.  There are many types defined
-by RFCs and vendors, so the list is long but not complete.  Please
-don't hestitate to ask to add additional information.
-
-If you wish to get access to the C<mime.types> files, which are
-available on various places in UNIX and Linux systems, then have a
-look at File::TypeInfo.
-
-=head2 MIME::Types and mod_perl
-
-This module uses a DATA handle to read all the types at first
-instantiation, which doesn't play nicely with mod_perl and fork.
-
-When you use this module with mod_perl, add this to C<startup.pl>
-
-   use MIME::Types;
-   BEGIN { MIME::Types->new() }
-
-Now, the type definitions will get parsed before the processes are spawned.
+This object administers a huge list of known mime-types, combined
+from various sources.  For instance, it contains B<all IANA> types
+and the knowledge of Apache.
 
 =head2 MIME::Types and daemons (fork)
 
-If your program uses fork (usually for a daemon), then the situation
-is a bit like with mod_perl before: you want to have the type table
-initialized before you start forking. So, first call
+If your program uses fork (usually for a daemon), then you want to have
+the type table initialized before you start forking. So, first call
 
    my $mt = MIME::Types->new;
 
 Later, each time you create this object (you may, of course, also reuse
-the object you create here) you will get access to the same global table
+the object you create here) you will get access to B<the same global table>
 of types.
 
 =head1 METHODS
 
-=head2 Instantiation
+=head2 Constructors
 
 =over 4
 
@@ -65,10 +49,15 @@ Create a new C<MIME::Types> object which manages the data.  In the current
 implementation, it does not matter whether you create this object often
 within your program, but in the future this may change.
 
- -Option       --Default
-  only_complete  <false>
+ -Option         --Default
+  db_file          <installed source>
+  only_complete    <false>
+  only_iana        <false>
+  skip_extensions  <false>
 
 =over 2
+
+=item db_file => FILENAME
 
 =item only_complete => BOOLEAN
 
@@ -79,6 +68,14 @@ amount of memory consumed-- considerably.
 In your program you have to decide: the first time that you call
 the creator (C<new>) determines whether you get the full or the partial
 information.
+
+=item only_iana => BOOLEAN
+
+Only load the types which are currently known by IANA.
+
+=item skip_extensions => BOOLEAN
+
+Do not load the table to map extensions to types, which is quite large.
 
 =back
 
@@ -104,41 +101,51 @@ to work locally... broken applications...
 
 Returns a list of all defined extensions.
 
+=item $obj-E<gt>B<listTypes>()
+
+Returns a list of all defined mime-types by name only.  This will B<not>
+instantiate L<MIME::Type|MIME::Type> objects.  See L<types()|MIME::Types/"Knowledge">
+
 =item $obj-E<gt>B<mimeTypeOf>(FILENAME)
 
 Returns the C<MIME::Type> object which belongs to the FILENAME (or simply
 its filename extension) or C<undef> if the file type is unknown.  The extension
-is used, and considered case-insensitive.
+is used and considered case-insensitive.
 
 In some cases, more than one type is known for a certain filename extension.
-In that case, one of the alternatives is chosen at random.
+In that case, the preferred one is taken (for an unclear definition of
+preference)
 
 example: use of mimeTypeOf()
 
- my MIME::Types $types = MIME::Types->new;
- my MIME::Type  $mime = $types->mimeTypeOf('gif');
+ my $types = MIME::Types->new;
+ my $mime = $types->mimeTypeOf('gif');
 
- my MIME::Type  $mime = $types->mimeTypeOf('jpg');
+ my $mime = $types->mimeTypeOf('jpg');
  print $mime->isBinary;
 
 =item $obj-E<gt>B<type>(STRING)
 
-Return the C<MIME::Type> which describes the type related to STRING.  One
-type may be described more than once.  Different extensions is use for
-this type, and different operating systems may cause more than one
-C<MIME::Type> object to be defined.  In scalar context, only the first
-is returned.
+Returns the C<MIME::Type> which describes the type related to STRING.
+[2.00] Only one type will be returned.
+
+[before 2.00] One type may be described more than once.  Different
+extensions may be in use for this type, and different operating systems
+may cause more than one C<MIME::Type> object to be defined.  In scalar
+context, only the first is returned.
 
 =item $obj-E<gt>B<types>()
 
-Returns a list of all defined mime-types
+Returns a list of all defined mime-types.  For reasons of backwards
+compatibility, this will instantiate L<MIME::Type|MIME::Type> objects, which will
+be returned.  See L<listTypes()|MIME::Types/"Knowledge">.
 
 =back
 
 =head1 FUNCTIONS
 
 The next functions are provided for backward compatibility with MIME::Types
-versions 0.06 and below.  This code originates from Jeff Okamoto
+versions [0.06] and below.  This code originates from Jeff Okamoto
 F<okamoto@corp.hp.com> and others.
 
 =over 4
@@ -161,9 +168,9 @@ Like C<mimeTypeOf>, but does not return an C<MIME::Type> object. If the file
 example: use of function by_suffix()
 
  use MIME::Types 'by_suffix';
- my ($mediatype, $encoding) = by_suffix 'image.gif';
+ my ($mediatype, $encoding) = by_suffix('image.gif');
 
- my $refdata =  by_suffix 'image.gif';
+ my $refdata = by_suffix('image.gif');
  my ($mediatype, $encoding) = @$refdata;
 
 =item B<import_mime_types>()
@@ -171,15 +178,15 @@ example: use of function by_suffix()
 This method has been removed: mime-types are only useful if understood
 by many parties.  Therefore, the IANA assigns names which can be used.
 In the table kept by this C<MIME::Types> module all these names, plus
-the most often used termporary names are kept.  When names seem to be
-missing, please contact the maintainer for inclussion.
+the most often used temporary names are kept.  When names seem to be
+missing, please contact the maintainer for inclusion.
 
 =back
 
 =head1 SEE ALSO
 
-This module is part of MIME-Types distribution version 1.38,
-built on January 11, 2013. Website: F<http://perl.overmeer.net/mimetypes/>
+This module is part of MIME-Types distribution version 2.00,
+built on August 02, 2013. Website: F<http://perl.overmeer.net/mimetypes/>
 
 =head1 LICENSE
 

@@ -1,6 +1,8 @@
+=encoding utf8
+
 =head1 NAME
 
-MIME::Type - Definition of one MIME type
+MIME::Type - description of one MIME type
 
 =head1 SYNOPSIS
 
@@ -26,11 +28,6 @@ MIME::Type - Definition of one MIME type
 MIME types are used in MIME entities, for instance as part of e-mail
 and HTTP traffic.  Sometimes real knowledge about a mime-type is need.
 Objects of C<MIME::Type> store the information on one such type.
-
-This module is built to conform to the MIME types of RFC's 2045 and 2231.
-It follows the official IANA registry at
-F<http://www.iana.org/assignments/media-types/>
-and the collection kept at F<http://www.ltsw.se/knbase/internet/mime.htp>
 
 =head1 OVERLOADED
 
@@ -169,6 +166,16 @@ except base64 are text encodings.
 
 Returns true when the encoding is base64.
 
+=item $obj-E<gt>B<isExperimental>()
+
+[2.00] Return C<true> when the type is defined for experimental
+use; the subtype starts with C<x.>
+
+=item $obj-E<gt>B<isPersonal>()
+
+[2.00] Return C<true> when the type is defined by a person for
+private use; the subtype starts with C<prs.>
+
 =item $obj-E<gt>B<isRegistered>()
 
 Mime-types which are not registered by IANA nor defined in RFCs shall
@@ -179,6 +186,11 @@ method will return false.
 =item $obj-E<gt>B<isSignature>()
 
 Returns true when the type is in the list of known signatures.
+
+=item $obj-E<gt>B<isVendor>()
+
+[2.00] Return C<true> when the type is defined by a vendor; the subtype
+starts with C<vnd.>
 
 =item $obj-E<gt>B<mediaType>()
 
@@ -208,8 +220,8 @@ specified with the C<type> option flag.
 
 =head1 SEE ALSO
 
-This module is part of MIME-Types distribution version 1.38,
-built on January 11, 2013. Website: F<http://perl.overmeer.net/mimetypes/>
+This module is part of MIME-Types distribution version 2.00,
+built on August 02, 2013. Website: F<http://perl.overmeer.net/mimetypes/>
 
 =head1 LICENSE
 
