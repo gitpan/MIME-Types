@@ -4,7 +4,7 @@
 # Pod stripped from pm file by OODoc 2.01.
 package MIME::Type;
 use vars '$VERSION';
-$VERSION = '2.00';
+$VERSION = '2.01';
 
 
 use strict;

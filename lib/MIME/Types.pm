@@ -5,7 +5,7 @@
 
 package MIME::Types;
 use vars '$VERSION';
-$VERSION = '2.00';
+$VERSION = '2.01';
 
 
 use strict;
@@ -68,6 +68,9 @@ sub _read_db($)
 
     close DB;
 }
+
+# Catalyst-Plugin-Static-Simple uses it :(
+sub create_type_index {}
 
 #-------------------------------------------
 

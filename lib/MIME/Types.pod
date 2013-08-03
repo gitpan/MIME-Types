@@ -185,8 +185,8 @@ missing, please contact the maintainer for inclusion.
 
 =head1 SEE ALSO
 
-This module is part of MIME-Types distribution version 2.00,
-built on August 02, 2013. Website: F<http://perl.overmeer.net/mimetypes/>
+This module is part of MIME-Types distribution version 2.01,
+built on August 03, 2013. Website: F<http://perl.overmeer.net/mimetypes/>
 
 =head1 LICENSE
 
