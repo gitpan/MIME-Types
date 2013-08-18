@@ -21,4 +21,4 @@ requires:
   File::Basename: 0
   File::Spec: 0
   Test::More: 0.47
-version: 2.01
+version: 2.02

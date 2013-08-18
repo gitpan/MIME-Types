@@ -220,8 +220,8 @@ specified with the C<type> option flag.
 
 =head1 SEE ALSO
 
-This module is part of MIME-Types distribution version 2.01,
-built on August 03, 2013. Website: F<http://perl.overmeer.net/mimetypes/>
+This module is part of MIME-Types distribution version 2.02,
+built on August 18, 2013. Website: F<http://perl.overmeer.net/mimetypes/>
 
 =head1 LICENSE
 

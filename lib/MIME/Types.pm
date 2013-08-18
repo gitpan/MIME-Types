@@ -5,7 +5,7 @@
 
 package MIME::Types;
 use vars '$VERSION';
-$VERSION = '2.01';
+$VERSION = '2.02';
 
 
 use strict;
@@ -33,6 +33,7 @@ sub _read_db($)
     my $db              = $args->{db_file}
       || File::Spec->catfile(dirname(__FILE__), 'types.db');
 
+    local *DB;
     open DB, '<:encoding(utf8)', $db
        or die "cannot open type database in $db: $!\n";
 
@@ -49,7 +50,8 @@ sub _read_db($)
 #warn "Skipping section $header\n" if $skip_section;
         (my $section = $major) =~ s/^x-//;
         if($major eq 'EXTENSIONS')
-        {   while(<DB>)
+        {   local $_;
+            while(<DB>)
             {   last if m/^$/;
                 next if $skip_section;
                 chomp;
