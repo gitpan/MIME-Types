@@ -190,8 +190,8 @@ missing, please contact the maintainer for inclusion.
 
 =head1 SEE ALSO
 
-This module is part of MIME-Types distribution version 2.03,
-built on September 04, 2013. Website: F<http://perl.overmeer.net/mimetypes/>
+This module is part of MIME-Types distribution version 2.04,
+built on September 12, 2013. Website: F<http://perl.overmeer.net/mimetypes/>
 
 =head1 LICENSE
 
