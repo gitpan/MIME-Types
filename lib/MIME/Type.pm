@@ -1,10 +1,10 @@
-# Copyrights 1999,2001-2013 by [Mark Overmeer].
+# Copyrights 1999,2001-2014 by [Mark Overmeer].
 #  For other contributors see ChangeLog.
 # See the manual pages for details on the licensing terms.
 # Pod stripped from pm file by OODoc 2.01.
 package MIME::Type;
 use vars '$VERSION';
-$VERSION = '2.04';
+$VERSION = '2.05';
 
 
 use strict;
@@ -90,7 +90,8 @@ sub isExperimental() {shift->{MT_simplified} =~ m!/x\.!  }
 
 
 sub isBinary() { shift->{MT_encoding} eq 'base64' }
-sub isAscii()  { shift->{MT_encoding} ne 'base64' }
+sub isText()   { shift->{MT_encoding} ne 'base64' }
+*isAscii = \&isText;
 
 
 # simplified names only!

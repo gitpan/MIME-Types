@@ -1,11 +1,11 @@
-# Copyrights 1999,2001-2013 by [Mark Overmeer].
+# Copyrights 1999,2001-2014 by [Mark Overmeer].
 #  For other contributors see ChangeLog.
 # See the manual pages for details on the licensing terms.
 # Pod stripped from pm file by OODoc 2.01.
 
 package MIME::Types;
 use vars '$VERSION';
-$VERSION = '2.04';
+$VERSION = '2.05';
 
 
 use strict;

@@ -15,6 +15,7 @@ MIME::Types - Definition of MIME types
  my $mimetypes = MIME::Types->new(...);      # MIME::Types object
  my $type = $mimetypes->type('text/plain');  # MIME::Type  object
  my $type = $mimetypes->mimeTypeOf('gif');
+ my $type = $mimetypes->mimeTypeOf('picture.jpg');
 
 =head1 DESCRIPTION
 
@@ -126,7 +127,7 @@ example: use of mimeTypeOf()
  my $types = MIME::Types->new;
  my $mime = $types->mimeTypeOf('gif');
 
- my $mime = $types->mimeTypeOf('jpg');
+ my $mime = $types->mimeTypeOf('picture.jpg');
  print $mime->isBinary;
 
 =item $obj-E<gt>B<type>(STRING)
@@ -190,12 +191,12 @@ missing, please contact the maintainer for inclusion.
 
 =head1 SEE ALSO
 
-This module is part of MIME-Types distribution version 2.04,
-built on September 12, 2013. Website: F<http://perl.overmeer.net/mimetypes/>
+This module is part of MIME-Types distribution version 2.05,
+built on August 27, 2014. Website: F<http://perl.overmeer.net/mimetypes/>
 
 =head1 LICENSE
 
-Copyrights 1999,2001-2013 by [Mark Overmeer]. For other contributors see ChangeLog.
+Copyrights 1999,2001-2014 by [Mark Overmeer]. For other contributors see ChangeLog.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
