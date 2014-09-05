@@ -2,7 +2,7 @@ use ExtUtils::MakeMaker;
 
 require 5.008_008;
 
-my $version  = '2.07';   # scanned by bin/collect_types !
+my $version  = '2.08';   # scanned by bin/collect_types !
 
 WriteMakefile
   ( NAME      => 'MIME::Types'
@@ -12,7 +12,6 @@ WriteMakefile
     , File::Spec     => 0
     , File::Basename => 0
     , List::Util     => 0
-    , Scalar::Util   => 0
     }
   , AUTHOR    => 'Mark Overmeer'
   , ABSTRACT  => 'Definition of MIME types'

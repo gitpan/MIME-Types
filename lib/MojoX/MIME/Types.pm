@@ -4,12 +4,11 @@
 # Pod stripped from pm file by OODoc 2.01.
 package MojoX::MIME::Types;
 use vars '$VERSION';
-$VERSION = '2.07';
+$VERSION = '2.08';
 
 use Mojo::Base -base;
 
 use MIME::Types   ();
-use Scalar::Util  qw/blessed/;
 
 
 sub new(%)

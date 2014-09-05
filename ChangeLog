@@ -6,6 +6,16 @@ Mark Overmeer.
 TODO:
  . Add source http://www.ltsw.se/knbase/internet/mime.htp ?
 
+version 2.08: Fri Sep  5 15:29:52 CEST 2014
+
+	Fixes:
+	- fix test t/40mojo.t which mojo is not installed
+	  rt.cpan.org#98639 [Chris]
+
+	Improvements:
+	- remove dependency on Scalar::Util
+	- documentation fixes
+
 version 2.07: Fri Sep  5 12:08:06 CEST 2014
 
 	Fixes:

@@ -21,6 +21,5 @@ requires:
   File::Basename: 0
   File::Spec: 0
   List::Util: 0
-  Scalar::Util: 0
   Test::More: 0.47
-version: 2.07
+version: 2.08

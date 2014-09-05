@@ -9,7 +9,7 @@ use warnings;
 use lib qw(lib t);
 use Test::More;
 
-eval { use Mojo::Base };
+eval "require Mojo::Base";
 plan skip_all => 'Mojo probably not installed' if $@;
 
 plan tests => 13;
