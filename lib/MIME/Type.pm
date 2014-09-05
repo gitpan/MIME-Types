@@ -4,7 +4,7 @@
 # Pod stripped from pm file by OODoc 2.01.
 package MIME::Type;
 use vars '$VERSION';
-$VERSION = '2.06';
+$VERSION = '2.07';
 
 
 use strict;
@@ -15,7 +15,9 @@ use Carp 'croak';
 #-------------------------------------------
 
 
-use overload '""' => 'type', cmp => 'equals';
+use overload
+    '""' => 'type'
+  , cmp  => 'cmp';
 
 #-------------------------------------------
 
@@ -103,7 +105,7 @@ my %sigs = map +($_ => 1),
 sub isSignature() { $sigs{shift->{MT_simplified}} }
 
 
-sub equals($)
+sub cmp($)
 {   my ($self, $other) = @_;
 
     my $type = ref $other
@@ -112,5 +114,6 @@ sub equals($)
 
     $self->simplified cmp $type;
 }
+sub equals($) { $_[0]->cmp($_[1])==0 }
 
 1;

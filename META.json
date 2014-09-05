@@ -34,10 +34,12 @@
          "requires" : {
             "File::Basename" : "0",
             "File::Spec" : "0",
+            "List::Util" : "0",
+            "Scalar::Util" : "0",
             "Test::More" : "0.47"
          }
       }
    },
    "release_status" : "stable",
-   "version" : "2.06"
+   "version" : "2.07"
 }
