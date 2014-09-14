@@ -5,7 +5,7 @@
 
 package MIME::Types;
 use vars '$VERSION';
-$VERSION = '2.08';
+$VERSION = '2.09';
 
 
 use strict;
@@ -78,7 +78,6 @@ sub create_type_index {}
 
 #-------------------------------------------
 
-
 sub type($)
 {   my $spec    = lc $_[1];
     $spec       = 'text/plain' if $spec eq 'text';   # old mailers
@@ -150,7 +149,6 @@ sub listTypes()
 }
 
 
-
 sub extensions { keys %{$typedb{EXTENSIONS}} }
 sub _MojoExtTable() {$typedb{EXTENSIONS}}
 
@@ -168,7 +166,7 @@ sub httpAccept($)
           $ !x or next;
 
         my $mime = "$1/$2$4";
-        my $q    = $3 // ($1 eq '*' ? -2 : $2 eq '*' ? -1 : 1);
+        my $q    = $3 || ($1 eq '*' ? -2 : $2 eq '*' ? -1 : 1);
         push @listed, [ $mime, $q-@listed*0.001 ];
     }
     map $_->[0], sort {$b->[1] <=> $a->[1]} @listed;

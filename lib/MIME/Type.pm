@@ -4,7 +4,7 @@
 # Pod stripped from pm file by OODoc 2.01.
 package MIME::Type;
 use vars '$VERSION';
-$VERSION = '2.08';
+$VERSION = '2.09';
 
 
 use strict;
@@ -27,13 +27,13 @@ sub new(@) { (bless {}, shift)->init( {@_} ) }
 sub init($)
 {   my ($self, $args) = @_;
 
-    my $type = $self->{MT_type}       = $args->{type}
+    my $type = $self->{MT_type} = $args->{type}
        or croak "ERROR: Type parameter is obligatory.";
 
-    $self->{MT_simplified} = $args->{simplified}
+    $self->{MT_simplified}      = $args->{simplified}
        || $self->simplified($type);
 
-    $self->{MT_extensions} = $args->{extensions} || [];
+    $self->{MT_extensions}      = $args->{extensions} || [];
 
     $self->{MT_encoding}
        = $args->{encoding}          ? $args->{encoding}
@@ -47,7 +47,6 @@ sub init($)
 }
 
 #-------------------------------------------
-
 
 sub type() {shift->{MT_type}}
 
@@ -65,12 +64,8 @@ sub simplified(;$)
 
 
 sub extensions() { @{shift->{MT_extensions}} }
-
-
-sub encoding() {shift->{MT_encoding}}
-
-
-sub system() {shift->{MT_system}}
+sub encoding()   {shift->{MT_encoding}}
+sub system()     {shift->{MT_system}}
 
 #-------------------------------------------
 

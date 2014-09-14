@@ -51,7 +51,7 @@ of types.
 
 =over 4
 
-=item MIME::Types-E<gt>B<new>(OPTIONS)
+=item MIME::Types-E<gt>B<new>(%options)
 
 Create a new C<MIME::Types> object which manages the data.  In the current
 implementation, it does not matter whether you create this object often
@@ -93,7 +93,7 @@ Do not load the table to map extensions to types, which is quite large.
 
 =over 4
 
-=item $obj-E<gt>B<addType>(TYPE, ...)
+=item $obj-E<gt>B<addType>($type, ...)
 
 Add one or more TYPEs to the set of known types.  Each TYPE is a
 C<MIME::Type> which must be experimental: either the main-type or
@@ -114,7 +114,7 @@ Returns a list of all defined extensions.
 Returns a list of all defined mime-types by name only.  This will B<not>
 instantiate L<MIME::Type|MIME::Type> objects.  See L<types()|MIME::Types/"Knowledge">
 
-=item $obj-E<gt>B<mimeTypeOf>(FILENAME)
+=item $obj-E<gt>B<mimeTypeOf>($filename)
 
 Returns the C<MIME::Type> object which belongs to the FILENAME (or simply
 its filename extension) or C<undef> if the file type is unknown.  The extension
@@ -132,7 +132,7 @@ example: use of mimeTypeOf()
  my $mime = $types->mimeTypeOf('picture.jpg');
  print $mime->isBinary;
 
-=item $obj-E<gt>B<type>(STRING)
+=item $obj-E<gt>B<type>($string)
 
 Returns the C<MIME::Type> which describes the type related to STRING.
 [2.00] Only one type will be returned.
@@ -246,8 +246,8 @@ missing, please contact the maintainer for inclusion.
 
 =head1 SEE ALSO
 
-This module is part of MIME-Types distribution version 2.08,
-built on September 05, 2014. Website: F<http://perl.overmeer.net/mimetypes/>
+This module is part of MIME-Types distribution version 2.09,
+built on September 14, 2014. Website: F<http://perl.overmeer.net/mimetypes/>
 
 =head1 LICENSE
 
